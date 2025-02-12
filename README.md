@@ -13,7 +13,16 @@
 
 ## Links
  
-*
-*
+* Figma - https://www.figma.com/design/nlGKqwtZBEyUyPYoN3uaKw/CrediGo?t=5uXRMXJg4xgnEZQv-1
+* Diagram - 
 
 ## Developers Profile
+
+* https://github.com/Dadaisuk1
+* https://github.com/whysoserious3221
+* https://github.com/Boyax123123
+
+
+
+
+
