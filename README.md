@@ -1,7 +1,7 @@
 <!-- Logo -->
 <div style="display: flex; align-items: center; gap: 10px;">
   <img
-    src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/CrediGo(2).svg"
+    src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/CrediGo(3).svg"
   />
 </div>
 
