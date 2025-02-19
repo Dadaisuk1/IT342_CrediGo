@@ -34,6 +34,14 @@
     />
 </a>
 
+<a href="https://clickup.com/lp?utm_source=google&utm_medium=cpc&utm_campaign=gs_cpc_arlv_nnc_brand_trial_all-devices_troas_lp_x_all-departments_x_brand&utm_content=all-countries_kw-target_text_all-industries_all-features_all-use-cases_clickup_broad&utm_term=b_clickup&utm_creative=651395805263_BrandChampion-03072023_rsa&utm_custom1=&utm_custom2=&gad_source=1&gclid=EAIaIQobChMI8rPu1f3OiwMVB1cPAh2hng3-EAAYASAAEgJ8XPD_BwE" style="text-decoration: none;">
+    <img
+      src="https://www.pinterest.com/pin/clickup-logo--268456827777975135/"
+    />
+</a>
+
+
+
 ## Developers Profile
 
 <a href="https://github.com/Dadaisuk1" style="text-decoration: none;">
