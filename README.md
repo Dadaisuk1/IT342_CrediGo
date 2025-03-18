@@ -9,6 +9,7 @@
   This project provides a simple and user-friendly way to handle microtransactions for online games, services, and platforms. It ensures a smooth buying experience by offering secure transactions, a transaction history, and an easy-to-use digital wallet. Users can track their spending, leave reviews, and find the best deals without visiting multiple websites.
 </h6>
 
+---
 ### 🚀Features
 <h6>
   This are the lists of Features in our System:
@@ -52,6 +53,7 @@
   </li>
 </ol>
 
+---
 ### 🛠 Tech Stack
 <h6>This project is built using the following technologies:</h6>
 
@@ -63,8 +65,8 @@
   <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/postgresql.png" width="40px"/></a>
 </div>
 
+---
 ### 🔗Links
-
 <h6>
   Just click the icons to view Diagrams, Figma, and Gantt Chart:
 </h6>
@@ -92,8 +94,8 @@
   </a>
 </div>
 
+---
 ### 🧑‍💻Developers Profile
-
 <a href="https://github.com/Dadaisuk1" style="text-decoration: none;">
     <img
       src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Dev(1).svg"
