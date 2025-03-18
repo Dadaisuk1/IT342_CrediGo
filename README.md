@@ -5,9 +5,11 @@
   />
 </div>
 
-> This project provides a simple and user-friendly way to handle microtransactions for online games, services, and platforms. It ensures a smooth buying experience by offering secure transactions, a transaction history, and an easy-to-use digital wallet. Users can track their spending, leave reviews, and find the best deals without visiting multiple websites.
+<h6>
+  This project provides a simple and user-friendly way to handle microtransactions for online games, services, and platforms. It ensures a smooth buying experience by offering secure transactions, a transaction history, and an easy-to-use digital wallet. Users can track their spending, leave reviews, and find the best deals without visiting multiple websites.
+</h6>
 
-## Features
+## 🚀Features
 <h6>
   This are the lists of Features in our System:
 </h6>
@@ -50,7 +52,7 @@
   </li>
 </ol>
 
-## Links
+## 🔗Links
 
 <h6>
   Just click the icons to view Diagrams, Figma, and Gantt Chart:
@@ -77,7 +79,7 @@
   </a>
 </div>
 
-## Developers Profile
+## 🧑‍💻Developers Profile
 
 <a href="https://github.com/Dadaisuk1" style="text-decoration: none;">
     <img
