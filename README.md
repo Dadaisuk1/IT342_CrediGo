@@ -52,37 +52,15 @@
   </li>
 </ol>
 
-### Teach Stack
-<h6>
-  This project is built using the following technologies:
-</h6>
+### 🛠 Tech Stack
+<h6>This project is built using the following technologies:</h6>
 
-<div style="display: flex; align-items: center; gap: 10px;">
-  <a href="#" style="text-decoration: none;">
-    <img
-      src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png"
-    />
-  </a>
-  <a href="#" style="text-decoration: none;">
-    <img
-      src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/spring.png"
-    />
-  </a>
-  <a href="#" style="text-decoration: none;">
-    <img
-      src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/react.png"
-    />
-  </a>
-  <a href="#" style="text-decoration: none;">
-    <img
-      src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/android.png"
-    />
-  </a>
-  <a href="#" style="text-decoration: none;">
-    <img
-      src="  https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/postgresql.png"
-    />
-  </a>
+<div style="display: flex; align-items: center; gap: 8px;">
+  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" width="40px"/></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/spring.png" width="40px"/></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/react.png" width="40px"/></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/android.png" width="40px"/></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/postgresql.png" width="40px"/></a>
 </div>
 
 ### 🔗Links
