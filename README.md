@@ -29,7 +29,7 @@
 
 ## Links
 <h6>
-  Just click the icons to view Gantt Chart and Figma:
+  Just click the icons to view Diagrams, Figma, and Gantt Chart:
 </h6>
 <div style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
   <img
