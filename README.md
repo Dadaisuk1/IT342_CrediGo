@@ -11,26 +11,47 @@
 <h6>
   This are the lists of Features in our System:
 </h6>
-
-1. Digital Funds
-- Users can select a digital funds offered in the home page that showcase available digigtal platforms.
-
-2. Transaction History
-- Users can view pas transactions to track their spending.
-
-3. Wishlist
-- Users can save the product they're interested to for future purchase.
-
-4. Review System
-- Users can rate and review digital funds after purchasing.
-
-5. E-wallet
-- Users can store funds in an app wallet for faster transactions.
-
-6. Product Search
-- Users can search for digital funds by name, or game.
+<ol>
+  <li>
+    Digital Funds
+    <ul>
+      <li>Users can select a digital funds offered in the home page that show case available digital platforms.</li>
+    </ul>
+  </li>
+  <li>
+    Transaction History
+    <ul>
+      <li>Users can view past transactions to track their spending.</li>
+    </ul>
+  </li>
+  <li>
+    Wishlist
+    <ul>
+      <li>Users can save the product they are interested in for future purchase..</li>
+    </ul>
+  </li>
+  <li>
+    Review System
+    <ul>
+      <li>Users can rate and review digital funds after purchasing.</li>
+    </ul>
+  </li>
+  <li>
+    E-wallet
+    <ul>
+      <li>Users can store funds in an app wallet for faster transactions.</li>
+    </ul>
+  </li>
+  <li>
+    Product Search
+    <ul>
+      <li>Users can search for digital funds by name, or game.</li>
+    </ul>
+  </li>
+</ol>
 
 ## Links
+
 <h6>
   Just click the icons to view Diagrams, Figma, and Gantt Chart:
 </h6>
