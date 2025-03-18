@@ -8,6 +8,9 @@
 > This project provides a simple and user-friendly way to handle microtransactions for online games, services, and platforms. It ensures a smooth buying experience by offering secure transactions, a transaction history, and an easy-to-use digital wallet. Users can track their spending, leave reviews, and find the best deals without visiting multiple websites.
 
 ## Features
+<h6>
+  This are the lists of Features in our System:
+</h6>
 
 1. Digital Funds
 - Users can select a digital funds offered in the home page that showcase available digigtal platforms.
