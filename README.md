@@ -69,22 +69,9 @@
   Just click the icons to view Diagrams, Figma, and Gantt Chart:
 </h6>
 <div style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-  <a href="#" style="text-decoration: none;">
-    <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/hp.svg"
-      alt="Just click to the logo's to go the links."
-    />
-  </a>
-  <a href="https://lucid.app/lucidchart/59c36890-8e4d-48da-8aca-16e5c81e1054/edit?viewport_loc=-1024%2C-387%2C2217%2C1039%2C0_0&invitationId=inv_87b4ae2b-4f35-4f92-9fce-7e6728ac5c6f" style="text-decoration: none;">
-    <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Lucide.svg"
-    />
-  </a>
-  <a href="https://www.figma.com/design/nlGKqwtZBEyUyPYoN3uaKw/CrediGo?t=5uXRMXJg4xgnEZQv-1" style="text-decoration: none;">
-    <img
-      src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=plastic&logo=figma&logoColor=white"
-    />
-  </a>
+  <a href="#"><img src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/hp.svg" width="40px"/></a>
+  <a href="https://lucid.app/lucidchart/59c36890-8e4d-48da-8aca-16e5c81e1054/edit?viewport_loc=-1024%2C-387%2C2217%2C1039%2C0_0&invitationId=inv_87b4ae2b-4f35-4f92-9fce-7e6728ac5c6f"><img src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Lucide.svg" width="40px"/></a>
+  <a href="https://www.figma.com/design/nlGKqwtZBEyUyPYoN3uaKw/CrediGo?t=5uXRMXJg4xgnEZQv-1"><img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=plastic&logo=figma&logoColor=white" width="40px"/></a>
   <a href="#" style="text-decoration: none;">
     <img
       src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Gahntt%20Chart.svg"
