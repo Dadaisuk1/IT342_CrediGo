@@ -98,19 +98,19 @@
 ### 🧑‍💻Developers Profile
 <a href="https://github.com/Dadaisuk1" style="text-decoration: none;">
     <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Dev(1).svg"
+      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/dev1.svg"
     />
 </a>
 
 <a href="https://github.com/whysoserious3221" style="text-decoration: none;">
     <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Dev(2).svg"
+      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/dev2.svg"
     />
 </a>
 
 <a href="https://github.com/Boyax123123" style="text-decoration: none;">
     <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Dev(3).svg"
+      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/dev3.svg"
     />
 </a>
 
