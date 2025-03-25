@@ -89,6 +89,7 @@
     <img
       src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Gahntt%20Chart.svg"
     />
+    https://docs.google.com/spreadsheets/d/1WcfUJcijxxCVGjOvMWQ_dhoAO8QkyeCh3kKCO6VlsYo/edit?usp=sharing
   </a>
 </div>
 
