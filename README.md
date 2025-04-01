@@ -91,8 +91,12 @@
     />
     
   </a>
-
-  https://docs.google.com/document/d/1W7DZPxcE4X0oZpkZDbZ8QiP1F1NVUsC-Ftq7ojO5--U/edit?tab=t.0#heading=h.11u5bx6k9d79
+  <a href="https://docs.google.com/document/d/1W7DZPxcE4X0oZpkZDbZ8QiP1F1NVUsC-Ftq7ojO5--U/edit?tab=t.0#heading=h.11u5bx6k9d79" style="text-decoration: none;">
+    <img
+      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Word.svg"
+    />
+    
+  </a>
 </div>
 
 ---
@@ -114,9 +118,3 @@
       src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/dev3.svg"
     />
 </a>
-
-
-
-
-
-
