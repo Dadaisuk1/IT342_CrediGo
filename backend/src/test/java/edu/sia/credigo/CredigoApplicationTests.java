@@ -1,4 +1,4 @@
-package edu.cit.credigo;
+package edu.sia.credigo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
