@@ -34,9 +34,9 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/category/{category}")
-    public ResponseEntity<List<ProductEntity>> getProductsByCategory(@PathVariable String category) {
-        return ResponseEntity.ok(productService.getProductsByCategory(category));
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<ProductEntity>> getProductsByCategory(@PathVariable Long categoryId) {
+        return ResponseEntity.ok(productService.getProductsByCategory(categoryId));
     }
 
     @GetMapping("/search")

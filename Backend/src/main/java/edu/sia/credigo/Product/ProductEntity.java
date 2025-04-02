@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import edu.sia.credigo.Wishlist.WishlistEntity;
 import edu.sia.credigo.Transaction.TransactionEntity;
+import edu.sia.credigo.ProductCategory.ProductCategoryEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -30,9 +31,13 @@ public class ProductEntity {
     private String productname;
     private String description;
     private BigDecimal price;
-    private String category;
     private String imageUrl;
     private Boolean isActive = true;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnore
+    private ProductCategoryEntity category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore

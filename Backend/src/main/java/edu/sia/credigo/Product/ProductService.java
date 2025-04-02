@@ -3,6 +3,8 @@ package edu.sia.credigo.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import edu.sia.credigo.ProductCategory.ProductCategoryEntity;
+import edu.sia.credigo.ProductCategory.ProductCategoryService;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +14,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductCategoryService productCategoryService;
 
     @Transactional
     public ProductEntity createProduct(ProductEntity product) {
@@ -33,7 +38,9 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public List<ProductEntity> getProductsByCategory(String category) {
+    public List<ProductEntity> getProductsByCategory(Long categoryId) {
+        ProductCategoryEntity category = productCategoryService.getCategoryById(categoryId)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
         return productRepository.findByCategory(category);
     }
 
