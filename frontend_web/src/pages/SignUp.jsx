@@ -30,7 +30,7 @@ const SignUp = () => {
                 {/* Back to home */}
                 <div
                     className="text-right w-full px-6 py-4 flex gap-1 items-center cursor-pointer"
-                    onClick={() => handleNavigation('/')}
+                    onClick={() => handleNavigation('/home')}
                 >
                     <IoMdArrowRoundBack size={20} color="#232946" />
                     <p className="text-[#232946] text-[16.67px] cursor-pointer font-medium">Back to Home</p>
