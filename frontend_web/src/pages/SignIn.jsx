@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import pattern_bg from '../assets/pattern-bg.svg';
 import { IoMdArrowRoundBack, IoIosEye, IoMdEyeOff } from "react-icons/io";
 import { FaGithub } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+
 
 const SignIn = () => {
 
@@ -11,6 +14,42 @@ const SignIn = () => {
     const isSignIn = location.pathname === '/sign-in'; // Router Path
     const isSignUp = location.pathname === '/sign-up'; // Router Path
     const [showPassword, setShowPassword] = useState(false); // Hide and Unhide Password
+    // // Add these at the top inside your component:
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const { login } = useContext(AuthContext);
+
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch('http://localhost:8080/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            });
+            const text = await res.text();
+            let data;
+            try {
+              data = JSON.parse(text);
+            } catch {
+              data = { message: text || 'Something went wrong.' };
+            }
+            
+            if (res.ok) {
+                login(data.token);
+                navigate('/home');
+                // Optional: Navigate to a dashboard page
+                // navigate('/dashboard');
+            } else {
+                alert(data.message || 'Sign in failed');
+            }
+        } catch (err) {
+            alert('Error signing in.');
+            console.error(err);
+        }
+    };
+    
 
     const handleNavigation = (path) => {
         navigate(path);
@@ -51,12 +90,14 @@ const SignIn = () => {
                     <div className="bg-[#232946] h-[600px] w-[80%] max-w-[600px] max-h-[700px] p-6 rounded-lg shadow-lg">
                         <h1 className="text-[32px] font-bold text-center mb-6 text-[#FFFFFE]">Sign In</h1>
 
-                        <form className="flex flex-col gap-6">
+                        <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                             <div className="flex flex-col gap-1">
-                                <label className="text-[18px] text-white font-medium">Email</label>
+                                <label className="text-[18px] text-white font-medium">Username</label>
                                 <input
-                                    type="email"
-                                    placeholder="Enter your email"
+                                    type="text"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    placeholder="Enter your username"
                                     className="p-3 border border-gray-300 rounded-md text-[15px]"
                                     required
                                 />
@@ -66,12 +107,15 @@ const SignIn = () => {
                                 <div className='relative'>
                                     <input
                                         type={showPassword ? 'text' : 'password'}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        
                                         placeholder="Enter your password"
                                         className="p-3 pr-10 border border-gray-300 rounded-md focus:outline-none text-[15px] w-full"
                                         required
                                     />
                                     <span
-                                        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer" 
+                                        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"  
                                         onClick={() => setShowPassword(prev => !prev)}
                                     >
                                         {showPassword ? <IoMdEyeOff size={25} color='#232946' /> : <IoIosEye size={25} color='#232946' />}

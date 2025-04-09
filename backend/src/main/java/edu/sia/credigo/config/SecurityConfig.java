@@ -1,5 +1,6 @@
 package edu.sia.credigo.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +19,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import edu.sia.credigo.User.CustomUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -27,17 +30,12 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;  
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> {
-            // Here you would typically load user details from your database
-            // For now, we'll create a default admin user
-            return User.builder()
-                    .username("admin")
-                    .password(passwordEncoder().encode("admin"))
-                    .roles("ADMIN")
-                    .build();
-        };
+        return customUserDetailsService;
+
     }
 
     @Bean

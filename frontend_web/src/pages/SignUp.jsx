@@ -1,149 +1,166 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom';
 import pattern_bg from '../assets/pattern-bg.svg';
 import { IoMdArrowRoundBack, IoIosEye, IoMdEyeOff } from "react-icons/io";
 import { FaGithub } from 'react-icons/fa';
 
 const SignUp = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isSignIn = location.pathname === '/sign-in';
+  const isSignUp = location.pathname === '/sign-up';
 
-    const location = useLocation();
-    const navigate = useNavigate();
-    const isSignIn = location.pathname === '/sign-in'; // Router Path
-    const isSignUp = location.pathname === '/sign-up'; // Router Path
-    const [isAgree, setIsAgree] = useState(false); // Checkbox
-    const [showPassword, setShowPassword] = useState(false); // First Password
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Second Password
+  const [isAgree, setIsAgree] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    const handleNavigation = (path) => {
-        navigate(path);
-    };
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [phonenumber, setPhoneNumber] = useState('');
+  const [dob, setDob] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-    return (
-        <div className="flex w-screen h-screen bg-[#fff]">
-            {/* Left side with image */}
-            <div className="w-[60%] h-full">
-                <img src={pattern_bg} alt="60%-background" className="w-full h-full object-cover" />
-            </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-            {/* Right side content */}
-            <div className="w-[40%] flex flex-col mt-10 mb-10">
-                {/* Back to home */}
-                <div
-                    className="text-right w-full px-6 py-4 flex gap-1 items-center cursor-pointer"
-                    onClick={() => handleNavigation('/')}
-                >
-                    <IoMdArrowRoundBack size={20} color="#232946" />
-                    <p className="text-[#232946] text-[16.67px] cursor-pointer font-medium">Back to Home</p>
-                </div>
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
 
-                {/* Breadcrumbs */}
-                <div className='flex justify-center'>
-                    {/* Sign In */}
-                    <p 
-                        onClick={() => handleNavigation('/sign-in')}
-                        className={`p-5 text-[24px] cursor-pointer ${isSignIn ? 'border-b-4 border-[#232946] font-medium' : 'border-b border-gray-300'}`}>Sign in</p>
-                    {/* Sign Up */}
-                    <p
-                        onClick={() => handleNavigation('/sign-up')}
-                        className={`p-5 text-[24px] cursor-pointer ${isSignUp ? 'border-b-4 border-[#232946] font-medium' : 'border-b border-gray-300'}`}>Sign up</p>
-                </div>
+    try {
+      const res = await fetch("http://localhost:8080/api/users/createUser", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          username,
+          phonenumber,
+          dateofbirth: dob,
+          password,
+          role: "Customer"
+        }),
+      });
 
-                {/* Form Section */}
-                <div className="flex justify-center items-center flex-grow">
-                    <div className="bg-[#232946] h-[680px] w-[80%] max-w-[600px] max-h-[700px] p-6 rounded-lg shadow-lg">
-                        <h1 className="text-[32px] font-bold text-center mb-6 text-[#FFFFFE]">Sign Up</h1>
+      const text = await res.text();
+      let data;
 
-                        <form className="flex flex-col gap-6">
-                            {/* Email */}
-                            <div className="flex flex-col gap-1">
-                                <label className="text-[18px] text-white font-medium">Email</label>
-                                <input
-                                    type="email"
-                                    placeholder='Enter your email'
-                                    className="p-3 border border-gray-300 rounded-md text-sm text-[15px]"
-                                    required
-                                />
-                            </div>
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = { message: text || 'Something went wrong.' };
+      }
 
-                            {/* Password */}
-                            <div className="flex flex-col gap-1">
-                                <label className="text-[18px] text-white font-medium">Password</label>
-                                
-                                <div className="relative">
-                                    <input
-                                        type={showPassword ? 'text' : 'password'}
-                                        placeholder="Enter your password"
-                                        className="p-3 pr-10 border border-gray-300 rounded-md focus:outline-none text-[15px] w-full"
-                                        required
-                                    />
-                                    
-                                    <span 
-                                        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer" 
-                                        onClick={() => setShowPassword(prev => !prev)}
-                                    >  
-                                        {showPassword ? <IoMdEyeOff size={25} color='#232946' /> : <IoIosEye size={25} color='#232946' />}
-                                    </span>
-                                </div>
-                            </div>
+      if (res.ok) {
+        alert('Signed up successfully!');
+        navigate('/sign-in');
+      } else {
+        alert(data.message || 'Sign up failed');
+      }
 
-                            {/* Re-enter password */}
-                            <div className="flex flex-col gap-1">
-                                <label className="text-[18px] text-white font-medium">Confirm Password</label>
-                                <div className="relative">
-                                    <input
-                                        type={showConfirmPassword ? 'text' : 'password'}
-                                        placeholder="Confirm your password"
-                                        className="p-3 pr-10 border border-gray-300 rounded-md focus:outline-none text-[15px] w-full"
-                                        required
-                                    />
+    } catch (err) {
+      alert('Error signing up.');
+      console.error(err);
+    }
+  };
 
-                                    <span
-                                        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
-                                        onClick={() => setShowConfirmPassword(prev => !prev)}
-                                    >
-                                        {showConfirmPassword ? <IoMdEyeOff size={25} color='#232946' /> : <IoIosEye size={25} color='#232946' />}
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            {/* Terms and Condition */}
-                            <div className="flex items-start-center gap-2 text-[12px] text-gray-300">
-                                <input type="checkbox" checked={isAgree} onChange={() => setIsAgree(!isAgree)} />
-                                <label>I agree to the Terms and Conditions</label>
-                            </div>
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
 
-                            {/* Submit Button */}
-                            <button
-                                type="submit"
-                                disabled={!isAgree}
-                                className={`text-[15px] font-medium py-3 rounded-md transition ${
-                                    isAgree ? 'bg-[#F3C6CD] text-[#232946] hover:bg-[#E7909E]' : 'bg-[#9FA0F8] text-gray-700 cursor-not-allowed'
-                                }`}
-                            >
-                                Sign Up
-                            </button>
-                        </form>
+  return (
+    <div className="flex w-screen h-screen bg-[#fff]">
+      <div className="w-[60%] h-full">
+        <img src={pattern_bg} alt="60%-background" className="w-full h-full object-cover" />
+      </div>
 
-                        <p className="text-center text-[13px] text-gray-300 mt-5 mb-5">or sign up with</p>
-
-                        <button className="flex items-center justify-center gap-2 border border-gray-300 py-4 w-full mt-2 rounded-md">
-                            <FaGithub size={20} color='#FFFFFE' />
-                            <span className='text-[#fffffe]'>Sign up with GitHub</span>
-                        </button>
-
-                        <div className="mt-6 text-center text-[12px] text-gray-300">
-                            <p className="inline-block">You already have an account?</p>
-                            <span 
-                                onClick={() => handleNavigation('/sign-in')}
-                                className="ml-2 text-[#ffffff] font-semibold cursor-pointer hover:underline">
-                                Sign in here
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div className="w-[40%] flex flex-col mt-10 mb-10">
+        <div className="text-right w-full px-6 py-4 flex gap-1 items-center cursor-pointer" onClick={() => handleNavigation('/')}>
+          <IoMdArrowRoundBack size={20} color="#232946" />
+          <p className="text-[#232946] text-[16.67px] cursor-pointer font-medium">Back to Home</p>
         </div>
-    );
+
+        <div className='flex justify-center'>
+          <p onClick={() => handleNavigation('/sign-in')} className={`p-5 text-[24px] cursor-pointer ${isSignIn ? 'border-b-4 border-[#232946] font-medium' : 'border-b border-gray-300'}`}>Sign in</p>
+          <p onClick={() => handleNavigation('/sign-up')} className={`p-5 text-[24px] cursor-pointer ${isSignUp ? 'border-b-4 border-[#232946] font-medium' : 'border-b border-gray-300'}`}>Sign up</p>
+        </div>
+
+        <div className="flex justify-center items-center flex-grow">
+          <div className="bg-[#232946] w-[80%] max-w-[600px] p-6 rounded-lg shadow-lg">
+            <h1 className="text-[32px] font-bold text-center mb-6 text-[#FFFFFE]">Sign Up</h1>
+
+            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+              <Input label="Email" type="email" value={email} setValue={setEmail} />
+              <Input label="Username" type="text" value={username} setValue={setUsername} />
+              <Input label="Phone Number" type="text" value={phonenumber} setValue={setPhoneNumber} />
+              <Input label="Date of Birth" type="date" value={dob} setValue={setDob} />
+
+              <PasswordInput label="Password" value={password} setValue={setPassword} show={showPassword} toggleShow={() => setShowPassword(!showPassword)} />
+              <PasswordInput label="Confirm Password" value={confirmPassword} setValue={setConfirmPassword} show={showConfirmPassword} toggleShow={() => setShowConfirmPassword(!showConfirmPassword)} />
+
+              <div className="flex items-center gap-2 text-[12px] text-gray-300">
+                <input type="checkbox" checked={isAgree} onChange={() => setIsAgree(!isAgree)} />
+                <label>I agree to the Terms and Conditions</label>
+              </div>
+
+              <button type="submit" disabled={!isAgree} className={`text-[15px] font-medium py-3 rounded-md transition ${isAgree ? 'bg-[#F3C6CD] text-[#232946] hover:bg-[#E7909E]' : 'bg-[#9FA0F8] text-gray-700 cursor-not-allowed'}`}>
+                Sign Up
+              </button>
+            </form>
+
+            <p className="text-center text-[13px] text-gray-300 mt-5 mb-5">or sign up with</p>
+
+            <button className="flex items-center justify-center gap-2 border border-gray-300 py-4 w-full mt-2 rounded-md">
+              <FaGithub size={20} color='#FFFFFE' />
+              <span className='text-[#fffffe]'>Sign up with GitHub</span>
+            </button>
+
+            <div className="mt-6 text-center text-[12px] text-gray-300">
+              <p className="inline-block">Already have an account?</p>
+              <span onClick={() => handleNavigation('/sign-in')} className="ml-2 text-[#ffffff] font-semibold cursor-pointer hover:underline">
+                Sign in here
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
+
+// ✅ Reusable input component
+const Input = ({ label, type, value, setValue }) => (
+  <div className="flex flex-col gap-1">
+    <label className="text-[18px] text-white font-medium">{label}</label>
+    <input
+      type={type}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      className="p-3 border border-gray-300 rounded-md text-sm text-[15px]"
+      required
+    />
+  </div>
+);
+
+// ✅ Reusable password input component
+const PasswordInput = ({ label, value, setValue, show, toggleShow }) => (
+  <div className="flex flex-col gap-1">
+    <label className="text-[18px] text-white font-medium">{label}</label>
+    <div className="relative">
+      <input
+        type={show ? 'text' : 'password'}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={`Enter ${label.toLowerCase()}`}
+        className="p-3 pr-10 border border-gray-300 rounded-md focus:outline-none text-[15px] w-full"
+        required
+      />
+      <span className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer" onClick={toggleShow}>
+        {show ? <IoMdEyeOff size={25} color='#232946' /> : <IoIosEye size={25} color='#232946' />}
+      </span>
+    </div>
+  </div>
+);
 
 export default SignUp;
