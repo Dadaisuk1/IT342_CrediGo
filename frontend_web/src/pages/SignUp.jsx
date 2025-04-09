@@ -26,10 +26,10 @@ const SignUp = () => {
             </div>
 
             {/* Right side content */}
-            <div className="w-[40%] flex flex-col mt-10 mb-10">
+            <div className="w-[40%] flex-1 gap-5 flex-col mt-10 mb-10">
                 {/* Back to home */}
                 <div
-                    className="text-right w-full px-6 py-4 flex gap-1 items-center cursor-pointer"
+                    className='text-right w-full px-6 py-4 flex gap-1 items-center cursor-pointer'
                     onClick={() => handleNavigation('/home')}
                 >
                     <IoMdArrowRoundBack size={20} color="#232946" />
@@ -37,7 +37,7 @@ const SignUp = () => {
                 </div>
 
                 {/* Breadcrumbs */}
-                <div className='flex justify-center'>
+                <div className='flex justify-center mb-5'>
                     {/* Sign In */}
                     <p 
                         onClick={() => handleNavigation('/sign-in')}
