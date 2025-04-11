@@ -1,31 +1,33 @@
 import React from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { FaRegUserCircle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const isSignIn = location.pathname === '/sign-in';
-    const isSignUp = location.pathname === '/sign-up';
-    const isHome = location.pathname === '/home';
     const isLoggedIn = false;
     
     const handleNavigation = (path) => {
         navigate(path);
     };
 
+    const navLinkClass = ({ isActive }) => 
+        isActive
+            ? 'text-[#fffffe] font-semibold transition'
+            : 'text-gray-700 hover:text-[#fffffe] transition';
+
     return (
-        <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-md">
+        <nav className="flex items-center justify-between px-6 py-4 shadow-md">
             {/* Logo and Navigation Links */}
             <div className="flex items-center gap-8">
-                <a href="#" className="text-2xl font-bold text-blue-600">CrediGo</a>
-                <ul className="hidden md:flex gap-6 text-gray-700 font-medium">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Transactions</a></li>
-                <li><a href="#">Wishlist</a></li>
-                <li><a href="#">About</a></li>
+                <NavLink to="/" className="text-2xl font-bold text-blue-400">CrediGo</NavLink>
+                <ul className="hidden md:flex gap-6 font-medium">
+                    <li><NavLink to="/home" className={navLinkClass}>Home</NavLink></li>
+                    <li><NavLink to="/shop" className={navLinkClass}>Shop</NavLink></li>
+                    <li><NavLink to="/transactions" className={navLinkClass}>Transactions</NavLink></li>
+                    <li><NavLink to="/wishlist" className={navLinkClass}>Wishlist</NavLink></li>
+                    <li><NavLink to="/about" className={navLinkClass}>About</NavLink></li>
                 </ul>
             </div>
 
@@ -49,10 +51,20 @@ const NavBar = () => {
 
                 {/* Logged In: Search & Profile */}
                 {isLoggedIn && (
-                <>
-                    <IoSearch className="text-2xl cursor-pointer text-gray-600" />
+                    <div className="flex items-center gap-4">
+                    {/* Search with Icon Inside */}
+                    <div className="relative">
+                        <input
+                        type="text"
+                        placeholder="Search"
+                        className="bg-[#fffffe] text-[#232946] w-[300px] h-10 pl-4 pr-10 rounded-md focus:outline-none"
+                        />
+                        <IoSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xl text-gray-600 cursor-pointer" />
+                    </div>
+
+                    {/* Profile Icon */}
                     <FaRegUserCircle className="text-2xl text-gray-600 cursor-pointer" />
-                </>
+                    </div>
                 )}
             </div>
         </nav>

@@ -6,6 +6,9 @@ const SignUp = lazy(() => import('./pages/SignUp'));
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Home = lazy(() => import('./pages/Home'));
 const Shop = lazy(() => import('./pages/Shop'));
+const Transactions = lazy( () => import('./pages/Transactions'));
+const Wishlist = lazy(() => import('./pages/Wishlist'));
+const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 /*
@@ -27,6 +30,10 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/about" element={<About />} />
+
 
         {/* <Route path="/admin" element={<ProtectedAdminRoute />} /> */}
 

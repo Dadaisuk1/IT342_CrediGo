@@ -48,7 +48,7 @@ const SignIn = () => {
 
                 {/* Form Section */}
                 <div className="flex justify-center items-center flex-grow">
-                    <div className="bg-[#232946] h-[600px] w-[80%] max-w-[600px] max-h-[700px] p-6 rounded-lg shadow-lg">
+                    <div className="bg-[#232946] h-[500px] w-[80%] max-w-[600px] max-h-[700px] p-6 rounded-lg shadow-lg">
                         <h1 className="text-[32px] font-bold text-center mb-6 text-[#FFFFFE]">Sign In</h1>
 
                         <form className="flex flex-col gap-6">
