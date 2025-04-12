@@ -14,8 +14,8 @@ const NavBar = () => {
 
     const navLinkClass = ({ isActive }) => 
         isActive
-            ? 'text-[#fffffe] font-semibold transition'
-            : 'text-gray-700 hover:text-[#fffffe] transition';
+            ? 'text-[#fffffe] underline underline-offset-8 font-semibold transition ease-in-out'
+            : 'text-[#B8C1EC] hover:text-[#fffffe] transition ease-in-out';
 
     return (
         <nav className="flex items-center justify-between px-6 py-4 shadow-md">
@@ -34,16 +34,16 @@ const NavBar = () => {
             {/* Right Side: Wallet, Get Started or Profile/Search */}
             <div className="flex items-center gap-6">
                 {/* Wallet */}
-                <div className="text-gray-800">
+                <div className="items-center gap-5">
                     <span className="font-semibold">Wallet:</span>
-                    <a href="#" className="ml-1">(₱0.00)</a>
+                    <a href="#" className="ml-1 text-[#EEBBC3]">(₱0.00)</a>
                 </div>
 
                 {/* Not Logged In */}
                 {!isLoggedIn && (
                 <a
                     onClick={() => handleNavigation('/sign-in')}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition cursor-pointer"
+                    className="px-4 py-2 bg-[#EEBBC3] text-[#232946] font-bold rounded hover:bg-[#f0c8ce] transition cursor-pointer"
                 >
                     Get Started
                 </a>
