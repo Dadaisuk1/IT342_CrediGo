@@ -7,12 +7,12 @@ const NavBar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const isLoggedIn = false;
-    
+
     const handleNavigation = (path) => {
         navigate(path);
     };
 
-    const navLinkClass = ({ isActive }) => 
+    const navLinkClass = ({ isActive }) =>
         isActive
             ? 'text-[#fffffe] underline underline-offset-8 font-semibold transition ease-in-out'
             : 'text-[#B8C1EC] hover:text-[#fffffe] transition ease-in-out';
@@ -28,6 +28,7 @@ const NavBar = () => {
                     <li><NavLink to="/transactions" className={navLinkClass}>Transactions</NavLink></li>
                     <li><NavLink to="/wishlist" className={navLinkClass}>Wishlist</NavLink></li>
                     <li><NavLink to="/about" className={navLinkClass}>About</NavLink></li>
+                    <li><NavLink to="/sign-upv2" className={navLinkClass}>Sign Upv2</NavLink></li>
                 </ul>
             </div>
 

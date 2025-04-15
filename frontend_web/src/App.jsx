@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import SignUpV2 from './pages/SignUpv2';
 
 // Lazy load page components
 const SignUp = lazy(() => import('./pages/SignUp'));
@@ -34,6 +35,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/about" element={<About />} />
 
+        {/* Designing */}
+        <Route path="/sign-upv2" element={<SignUpV2 />} />
 
         {/* <Route path="/admin" element={<ProtectedAdminRoute />} /> */}
 

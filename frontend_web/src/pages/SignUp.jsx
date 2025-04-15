@@ -7,11 +7,11 @@ import { FaGithub } from 'react-icons/fa';
 const SignUp = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    
+
     // Path states
     const isSignIn = location.pathname === '/sign-in';
     const isSignUp = location.pathname === '/sign-up';
-    
+
     // Form states
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -19,7 +19,7 @@ const SignUp = () => {
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState(''); // Added missing password state
     const [confirmPassword, setConfirmPassword] = useState('');
-    
+
     // UI states
     const [isAgree, setIsAgree] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -49,14 +49,14 @@ const SignUp = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    email, 
-                    username, 
-                    phonenumber: phoneNumber, 
-                    dateofbirth: dob, 
-                    password, 
-                    status: "active", 
-                    wallet: '0.00', 
-                    role: "Customer" 
+                    email,
+                    username,
+                    phonenumber: phoneNumber,
+                    dateofbirth: dob,
+                    password,
+                    status: "active",
+                    wallet: '0.00',
+                    role: "Customer"
                 }),
             });
 
@@ -104,11 +104,11 @@ const SignUp = () => {
                     <IoMdArrowRoundBack size={20} color="#232946" />
                     <p className="text-[#232946] text-sm cursor-pointer font-medium">Back to Home</p>
                 </div>
-                
+
                 {/* Breadcrumbs */}
                 <div className="flex justify-center mb-5">
                     {/* Sign In */}
-                    <p 
+                    <p
                         onClick={() => handleNavigation('/sign-in')}
                         className={`p-5 text-xl cursor-pointer ${isSignIn ? 'border-b-4 border-[#232946] font-medium' : 'border-b border-gray-300'}`}
                     >
@@ -196,10 +196,10 @@ const SignUp = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
                                     />
-                                    <span 
-                                        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer" 
+                                    <span
+                                        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
                                         onClick={() => setShowPassword(prev => !prev)}
-                                    >  
+                                    >
                                         {showPassword ? <IoMdEyeOff size={20} color="#232946" /> : <IoIosEye size={20} color="#232946" />}
                                     </span>
                                 </div>
@@ -225,12 +225,12 @@ const SignUp = () => {
                                     </span>
                                 </div>
                             </div>
-                            
+
                             {/* Terms and Condition */}
                             <div className="flex items-start gap-2 text-xs text-gray-300">
-                                <input 
-                                    type="checkbox" 
-                                    checked={isAgree} 
+                                <input
+                                    type="checkbox"
+                                    checked={isAgree}
                                     onChange={() => setIsAgree(!isAgree)}
                                     id="terms"
                                     className="mt-1"
@@ -261,7 +261,7 @@ const SignUp = () => {
 
                         <div className="mt-6 text-center text-xs text-gray-300">
                             <p className="inline-block">You already have an account?</p>
-                            <span 
+                            <span
                                 onClick={() => handleNavigation('/sign-in')}
                                 className="ml-2 text-white font-semibold cursor-pointer hover:underline"
                             >
