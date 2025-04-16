@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import SignUpV2 from './pages/SignUpv2';
 
 // Lazy load page components
 const SignUp = lazy(() => import('./pages/SignUp'));
@@ -11,7 +10,7 @@ const Transactions = lazy( () => import('./pages/Transactions'));
 const Wishlist = lazy(() => import('./pages/Wishlist'));
 const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
+const SignUpV2 = lazy(() => import('./pages/SignUpv2'));
 /*
 // Example for protected routes (optional)
 const ProtectedAdminRoute = () => {

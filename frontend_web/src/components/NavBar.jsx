@@ -36,7 +36,7 @@ const NavBar = () => {
             <div className="flex items-center gap-6">
                 {/* Wallet */}
                 <div className="items-center gap-5">
-                    <span className="font-semibold">Wallet:</span>
+                    <span className="font-semibold text-white">Wallet:</span>
                     <a href="#" className="ml-1 text-[#EEBBC3]">(₱0.00)</a>
                 </div>
 
