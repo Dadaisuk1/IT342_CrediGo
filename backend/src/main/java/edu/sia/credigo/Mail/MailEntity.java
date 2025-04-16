@@ -17,14 +17,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="tblMail")
+@Table(name = "tblMail")
 public class MailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mailid;
     private String subject;
     private String body;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
@@ -32,9 +32,9 @@ public class MailEntity {
 
     @JsonProperty("userid")
     public Long getUserId() {
-        return user != null ? user.getUserid() : null;
+        return user != null ? user.getId() : null;
     }
-    
+
     @CreationTimestamp
     private LocalDateTime createdDate;
 }

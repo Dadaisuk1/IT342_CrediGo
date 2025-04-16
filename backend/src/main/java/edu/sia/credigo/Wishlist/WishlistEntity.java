@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="tblwishlist")
+@Table(name = "tblwishlist")
 public class WishlistEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class WishlistEntity {
 
     @JsonProperty("userid")
     public Long getUserId() {
-        return user != null ? user.getUserid() : null;
+        return user != null ? user.getId() : null;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)

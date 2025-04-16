@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-CredigoApplication<credigo>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "edu.sia.credigo.CredigoApplication",
+      "projectName": "credigo",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
