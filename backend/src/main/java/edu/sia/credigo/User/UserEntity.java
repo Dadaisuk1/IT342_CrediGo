@@ -3,7 +3,7 @@ package edu.sia.credigo.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+// import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,7 +20,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Table(name = "tblusers")
 @Entity
 public class UserEntity {
@@ -53,7 +52,7 @@ public class UserEntity {
     @JsonIgnore
     private List<TransactionEntity> transactions = new ArrayList<>();
 
-    public void dafaultRole(){
+    public void dafaultRole() {
         this.role = "Customer";
     }
 

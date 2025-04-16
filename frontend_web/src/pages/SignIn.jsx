@@ -83,6 +83,7 @@ return (
                 </div>
             </div>
 
+            {/* Form */}
             <div className="w-full md:w-3/5 max-w-lg mx-auto md:mx-0">
                 <div className="w-full p-8 bg-[#232946] rounded-lg shadow-2xl border border-[#4a5294]">
                     <div className="text-center mb-8">
@@ -90,7 +91,7 @@ return (
                     <h2 className="text-2xl font-bold">Sign In to CrediGo</h2>
                     <p className="text-gray-300 mt-2">Access your universal gaming wallet</p>
                     </div>
-
+                    
                     <div className="flex items-center gap-5 mb-6">
                     <button className="flex items-center justify-center gap-2 border border-gray-300 py-2 w-full rounded-md hover:bg-[#2a2f4a] transition">
                         <FaGithub size={18} />
