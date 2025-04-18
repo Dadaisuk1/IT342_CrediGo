@@ -1,10 +1,10 @@
 import React from 'react'
-import NavBar from '../components/NavBar';
+import Navbar from '../components/layout/Navbar';
 
 const Transactions = () => {
     return (
         <>
-            <NavBar />
+            <Navbar />
             <div className="flex flex-col items-center justify-center h-[80vh] gap-6">
                 <p className="text-[32px] font-semibold text-white">Transactions</p>
             </div>

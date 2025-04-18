@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import NavBar from '../components/NavBar';
+import Navbar from '../components/layout/Navbar';
 
 const Home = () => {
     const location = useLocation();
@@ -15,8 +15,8 @@ const Home = () => {
 
     return (
         <div className="min-h-screen bg-[#232946] text-white">
-        {/* NavBar always on top */}
-        <NavBar />
+        {/* Navbar always on top */}
+        <Navbar />
 
         {/* Main content centered */}
         <div className="flex flex-col items-center justify-center h-[80vh] gap-6">

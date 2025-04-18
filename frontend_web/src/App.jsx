@@ -1,7 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from './pages/admin/Dashboard';
 
 // Lazy load page components
+// for users
 const SignUp = lazy(() => import('./pages/SignUp'));
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Home = lazy(() => import('./pages/Home'));
@@ -11,6 +13,9 @@ const Wishlist = lazy(() => import('./pages/Wishlist'));
 const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const SignUpV2 = lazy(() => import('./pages/SignUpv2'));
+
+// lazy load page for admin
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 /*
 // Example for protected routes (optional)
 const ProtectedAdminRoute = () => {
@@ -33,7 +38,8 @@ function App() {
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/about" element={<About />} />
-
+        <Route path="/admin/*" element={<AdminDashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         {/* Designing */}
         <Route path="/sign-upv2" element={<SignUpV2 />} />
 

@@ -3,7 +3,7 @@ import { IoSearch } from 'react-icons/io5';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
-const NavBar = () => {
+const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const isLoggedIn = false;
@@ -72,4 +72,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default Navbar;
