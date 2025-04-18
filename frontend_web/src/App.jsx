@@ -4,15 +4,14 @@ import Dashboard from './pages/admin/Dashboard';
 
 // Lazy load page components
 // for users
-const SignUp = lazy(() => import('./pages/SignUp'));
 const SignIn = lazy(() => import('./pages/SignIn'));
+const SignUpV2 = lazy(() => import('./pages/SignUpv2'));
 const Home = lazy(() => import('./pages/Home'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Transactions = lazy( () => import('./pages/Transactions'));
 const Wishlist = lazy(() => import('./pages/Wishlist'));
 const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const SignUpV2 = lazy(() => import('./pages/SignUpv2'));
 
 // lazy load page for admin
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
@@ -32,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-up" element={<SignUpV2 />} />
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/transactions" element={<Transactions />} />
@@ -40,8 +39,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* Designing */}
-        <Route path="/sign-upv2" element={<SignUpV2 />} />
 
         {/* <Route path="/admin" element={<ProtectedAdminRoute />} /> */}
 
