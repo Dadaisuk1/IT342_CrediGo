@@ -1,70 +1,73 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+import { FaSearch, FaEdit, FaTrash, FaPlus, FaGamepad } from 'react-icons/fa';
 import StatusBadge from '../../components/StatusBadge';
 // import adminService from '../api/adminService';
 
-// Mock products data (to be replaced with API call)
+// Mock game points products data
 const mockProducts = [
   {
     id: 1,
-    name: "Basic Credit Card",
-    sku: "CC-001",
-    category: "Credit Cards",
-    description: "Standard credit card with 2% cashback on all purchases",
-    interestRate: 18.5,
-    annualFee: 0,
+    name: "Mobile Legends Diamonds",
+    sku: "ML-001",
+    category: "Mobile Games",
+    description: "Purchase diamonds for Mobile Legends: Bang Bang",
+    pointsAmount: 100,
+    price: 9.99,
+    discount: 0,
     status: "active",
     createdAt: "2025-03-10"
   },
   {
     id: 2,
-    name: "Gold Credit Card",
-    sku: "CC-002",
-    category: "Credit Cards",
-    description: "Premium credit card with 3% cashback and travel benefits",
-    interestRate: 21.0,
-    annualFee: 95,
+    name: "PUBG UC",
+    sku: "PUBG-002",
+    category: "Mobile Games",
+    description: "Unknown Cash (UC) for PUBG Mobile",
+    pointsAmount: 500,
+    price: 24.99,
+    discount: 5,
     status: "active",
     createdAt: "2025-03-12"
   },
   {
     id: 3,
-    name: "Personal Loan",
-    sku: "LN-001",
-    category: "Loans",
-    description: "Unsecured personal loan with flexible terms",
-    interestRate: 12.5,
-    minAmount: 5000,
-    maxAmount: 50000,
+    name: "Genshin Impact Crystals",
+    sku: "GI-001",
+    category: "PC/Console Games",
+    description: "Genesis Crystals for Genshin Impact",
+    pointsAmount: 980,
+    price: 14.99,
+    discount: 0,
     status: "active",
     createdAt: "2025-03-15"
   },
   {
     id: 4,
-    name: "Student Loan",
-    sku: "LN-002",
-    category: "Loans",
-    description: "Low-interest loans designed for students",
-    interestRate: 5.75,
-    minAmount: 1000,
-    maxAmount: 30000,
+    name: "Fortnite V-Bucks",
+    sku: "FN-002",
+    category: "PC/Console Games",
+    description: "V-Bucks currency for Fortnite",
+    pointsAmount: 1000,
+    price: 9.99,
+    discount: 0,
     status: "inactive",
     createdAt: "2025-03-20"
   },
   {
     id: 5,
-    name: "Premium Checking Account",
-    sku: "AC-001",
-    category: "Accounts",
-    description: "Checking account with no monthly fees and premium benefits",
-    interestRate: 0.25,
-    monthlyFee: 0,
+    name: "Roblox Robux",
+    sku: "RB-001",
+    category: "Kids Games",
+    description: "Robux for purchasing items in Roblox",
+    pointsAmount: 800,
+    price: 9.99,
+    discount: 10,
     status: "active",
     createdAt: "2025-03-25"
   }
 ];
 
-const ProductManagement = () => {
+const GamePointsManagement = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -83,8 +86,9 @@ const ProductManagement = () => {
     sku: '',
     category: '',
     description: '',
-    interestRate: 0,
-    annualFee: 0,
+    pointsAmount: 0,
+    price: 0,
+    discount: 0,
     status: 'active'
   });
 
@@ -114,8 +118,8 @@ const ProductManagement = () => {
           setError(null);
         }, 500);
       } catch (err) {
-        console.error('Error fetching products:', err);
-        setError('Failed to load product data');
+        console.error('Error fetching game points products:', err);
+        setError('Failed to load game points data');
         setLoading(false);
       }
     };
@@ -147,8 +151,9 @@ const ProductManagement = () => {
       sku: '',
       category: '',
       description: '',
-      interestRate: 0,
-      annualFee: 0,
+      pointsAmount: 0,
+      price: 0,
+      discount: 0,
       status: 'active'
     });
     setShowAddModal(true);
@@ -161,15 +166,16 @@ const ProductManagement = () => {
       sku: product.sku,
       category: product.category,
       description: product.description,
-      interestRate: product.interestRate,
-      annualFee: product.annualFee || 0,
+      pointsAmount: product.pointsAmount,
+      price: product.price,
+      discount: product.discount || 0,
       status: product.status
     });
     setShowAddModal(true);
   };
 
   const handleDeleteProduct = async (productId) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
+    if (window.confirm('Are you sure you want to delete this game points package?')) {
       try {
         // In a real implementation, this would be an API call
         // await adminService.deleteProduct(productId);
@@ -178,10 +184,10 @@ const ProductManagement = () => {
         const updatedProducts = products.filter(product => product.id !== productId);
         setProducts(updatedProducts);
         setTotalProducts(updatedProducts.length);
-        alert('Product deleted successfully');
+        alert('Game points package deleted successfully');
       } catch (err) {
-        console.error('Error deleting product:', err);
-        alert('Failed to delete product');
+        console.error('Error deleting game points package:', err);
+        alert('Failed to delete game points package');
       }
     }
   };
@@ -210,7 +216,7 @@ const ProductManagement = () => {
             : product
         );
         setProducts(updatedProducts);
-        alert('Product updated successfully');
+        alert('Game points package updated successfully');
       } else {
         // Create new product
         // In a real implementation, this would be an API call
@@ -224,13 +230,13 @@ const ProductManagement = () => {
         };
         setProducts([...products, newProduct]);
         setTotalProducts(totalProducts + 1);
-        alert('Product created successfully');
+        alert('Game points package created successfully');
       }
 
       setShowAddModal(false);
     } catch (err) {
-      console.error('Error saving product:', err);
-      alert('Failed to save product');
+      console.error('Error saving game points package:', err);
+      alert('Failed to save game points package');
     }
   };
 
@@ -240,12 +246,14 @@ const ProductManagement = () => {
   return (
     <div className="bg-white rounded-lg shadow">
       <div className="p-6 border-b border-gray-200 flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-[#232946]">Product Management</h2>
+        <h2 className="text-lg font-semibold text-[#232946] flex items-center">
+          <FaGamepad className="mr-2 text-[#6285cf]" /> Game Points Management
+        </h2>
         <button
           onClick={handleAddProduct}
           className="bg-[#6285cf] text-white px-4 py-2 rounded-md hover:bg-[#445ab1] transition-colors duration-200 flex items-center"
         >
-          <FaPlus className="mr-2" /> Add New Product
+          <FaPlus className="mr-2" /> Add New Game Points
         </button>
       </div>
 
@@ -254,7 +262,7 @@ const ProductManagement = () => {
           <form onSubmit={handleSearch} className="relative mb-4 md:mb-0">
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search game points..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
@@ -269,7 +277,7 @@ const ProductManagement = () => {
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
             >
-              <option value="">All Categories</option>
+              <option value="">All Game Types</option>
               {categories.map(category => (
                 <option key={category} value={category}>{category}</option>
               ))}
@@ -287,7 +295,7 @@ const ProductManagement = () => {
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center h-64">Loading product data...</div>
+          <div className="flex justify-center items-center h-64">Loading game points data...</div>
         ) : error ? (
           <div className="bg-red-100 p-4 rounded-lg text-red-700">{error}</div>
         ) : (
@@ -297,13 +305,16 @@ const ProductManagement = () => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Product
+                      Game Points
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Category
+                      Game Type
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Interest Rate
+                      Points Amount
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Price
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Status
@@ -331,7 +342,17 @@ const ProductManagement = () => {
                         <div className="text-sm text-gray-900">{product.category}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{product.interestRate}%</div>
+                        <div className="text-sm text-gray-900">{product.pointsAmount} points</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          ${product.price.toFixed(2)}
+                          {product.discount > 0 && (
+                            <span className="ml-2 text-xs text-green-600 font-medium">
+                              {product.discount}% OFF
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <StatusBadge status={product.status} />
@@ -386,13 +407,14 @@ const ProductManagement = () => {
         )}
       </div>
 
-      {/* Add/Edit Product Modal */}
+      {/* Add/Edit Game Points Modal */}
       {showAddModal && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center">
           <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 md:mx-auto">
             <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-[#232946]">
-                {editingProduct ? 'Edit Product' : 'Add New Product'}
+              <h3 className="text-lg font-semibold text-[#232946] flex items-center">
+                <FaGamepad className="mr-2 text-[#6285cf]" />
+                {editingProduct ? 'Edit Game Points Package' : 'Add New Game Points Package'}
               </h3>
               <button
                 onClick={() => setShowAddModal(false)}
@@ -405,13 +427,14 @@ const ProductManagement = () => {
             <form onSubmit={handleSubmitProduct} className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Game Points Name</label>
                   <input
                     type="text"
                     name="name"
                     value={productForm.name}
                     onChange={handleFormChange}
                     required
+                    placeholder="e.g. PUBG UC, Roblox Robux"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
                   />
                 </div>
@@ -429,7 +452,7 @@ const ProductManagement = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Game Category</label>
                   <select
                     name="category"
                     value={productForm.category}
@@ -437,10 +460,14 @@ const ProductManagement = () => {
                     required
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
                   >
-                    <option value="">Select Category</option>
+                    <option value="">Select Game Category</option>
                     {categories.map(category => (
                       <option key={category} value={category}>{category}</option>
                     ))}
+                    <option value="Mobile Games">Mobile Games</option>
+                    <option value="PC/Console Games">PC/Console Games</option>
+                    <option value="Kids Games">Kids Games</option>
+                    <option value="MMORPG">MMORPG</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -459,26 +486,41 @@ const ProductManagement = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Interest Rate (%)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Points Amount</label>
                   <input
                     type="number"
-                    name="interestRate"
-                    value={productForm.interestRate}
+                    name="pointsAmount"
+                    value={productForm.pointsAmount}
                     onChange={handleFormChange}
                     min="0"
-                    step="0.01"
+                    required
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Annual Fee ($)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
                   <input
                     type="number"
-                    name="annualFee"
-                    value={productForm.annualFee}
+                    name="price"
+                    value={productForm.price}
                     onChange={handleFormChange}
                     min="0"
+                    step="0.01"
+                    required
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Discount (%)</label>
+                  <input
+                    type="number"
+                    name="discount"
+                    value={productForm.discount}
+                    onChange={handleFormChange}
+                    min="0"
+                    max="100"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
                   />
                 </div>
@@ -490,6 +532,7 @@ const ProductManagement = () => {
                     value={productForm.description}
                     onChange={handleFormChange}
                     rows="3"
+                    placeholder="Describe the game points package, including any special features or limitations"
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6285cf] focus:border-transparent"
                   ></textarea>
                 </div>
@@ -507,7 +550,7 @@ const ProductManagement = () => {
                   type="submit"
                   className="px-4 py-2 bg-[#6285cf] text-white rounded-md hover:bg-[#445ab1]"
                 >
-                  {editingProduct ? 'Update Product' : 'Add Product'}
+                  {editingProduct ? 'Update Game Points' : 'Add Game Points'}
                 </button>
               </div>
             </form>
@@ -518,4 +561,4 @@ const ProductManagement = () => {
   );
 };
 
-export default ProductManagement;
+export default GamePointsManagement;
