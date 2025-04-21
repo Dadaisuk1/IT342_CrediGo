@@ -1,5 +1,5 @@
-import React from "react";
-import Navbar from "../components/layout/Navbar";
+import React, { lazy } from "react";
+const Navbar = lazy(() => import('../components/layout/Navbar'));
 
 const Wishlist = () => {
     return (

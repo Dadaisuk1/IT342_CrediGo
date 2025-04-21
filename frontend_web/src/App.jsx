@@ -12,6 +12,7 @@ const Transactions = lazy( () => import('./pages/Transactions'));
 const Wishlist = lazy(() => import('./pages/Wishlist'));
 const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Wallet = lazy(() => import('./pages/Wallet'));
 
 // lazy load page for admin
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
@@ -39,6 +40,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/wallet" element={<Wallet />} />
 
         {/* <Route path="/admin" element={<ProtectedAdminRoute />} /> */}
 

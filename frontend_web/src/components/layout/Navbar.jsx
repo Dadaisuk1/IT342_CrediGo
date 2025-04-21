@@ -1,6 +1,7 @@
 import React from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { FaRegUserCircle } from 'react-icons/fa';
+import { TbCurrencyPeso } from "react-icons/tb";
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -34,9 +35,12 @@ const Navbar = () => {
             {/* Right Side: Wallet, Get Started or Profile/Search */}
             <div className="flex items-center gap-6">
                 {/* Wallet */}
-                <div className="items-center gap-5">
+                <div
+                onClick={() => handleNavigation('/wallet')}
+                className="flex items-center cursor-pointer">
                     <span className="font-semibold text-white">Wallet:</span>
-                    <a href="#" className="ml-1 text-[#EEBBC3]">(₱0.00)</a>
+                    <a className="ml-1 text-[#fff] flex items-center">
+                        <span><TbCurrencyPeso size={20} className="mr-[-1px]" /></span>00.0</a>
                 </div>
 
                 {/* Not Logged In */}

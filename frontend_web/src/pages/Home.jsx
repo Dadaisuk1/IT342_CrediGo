@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Navbar from '../components/layout/Navbar';
+
+const Navbar = lazy(() => import('../components/layout/Navbar'));
 
 const Home = () => {
     const location = useLocation();
