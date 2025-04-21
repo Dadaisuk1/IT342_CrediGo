@@ -91,7 +91,7 @@ return (
                     <h2 className="text-2xl font-bold">Sign In to CrediGo</h2>
                     <p className="text-gray-300 mt-2">Access your universal gaming wallet</p>
                     </div>
-                    
+
                     <div className="flex items-center gap-5 mb-6">
                     <button className="flex items-center justify-center gap-2 border border-gray-300 py-2 w-full rounded-md hover:bg-[#2a2f4a] transition">
                         <FaGithub size={18} />
@@ -182,7 +182,7 @@ return (
                     <p className="text-sm text-center text-gray-300 mt-4">
                         Don't have an account yet?
                         <span
-                        onClick={() => handleNavigation('/sign-upV2')}
+                        onClick={() => handleNavigation('/sign-up')}
                         className="ml-1 text-[#eebbc3] font-semibold cursor-pointer hover:underline"
                         >
                         Create one now
