@@ -1,6 +1,6 @@
 <!-- Logo -->
 <div style="display: flex; align-items: center; gap: 10px;">
-  <a href="#"><img src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/CrediGo.svg"/></a>
+  <a href="#"><img src="https://github.com/Dadaisuk1/img_repo/blob/main/SVG/credigo_repo_banner.svg"/></a>
 </div>
 
 <h6>
