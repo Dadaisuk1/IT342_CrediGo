@@ -101,7 +101,7 @@
   </a>
   <a href="https://docs.google.com/document/d/1W7DZPxcE4X0oZpkZDbZ8QiP1F1NVUsC-Ftq7ojO5--U/edit?tab=t.0#heading=h.11u5bx6k9d79" style="text-decoration: none;">
     <img
-      src=""
+      src="https://github.com/Dadaisuk1/img_repo/blob/main/SVG/ms_word.svg"
     />
 
   </a>
