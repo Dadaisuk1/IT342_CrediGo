@@ -85,7 +85,7 @@
   </a>
   <a href="https://lucid.app/lucidchart/59c36890-8e4d-48da-8aca-16e5c81e1054/edit?viewport_loc=-1024%2C-387%2C2217%2C1039%2C0_0&invitationId=inv_87b4ae2b-4f35-4f92-9fce-7e6728ac5c6f" style="text-decoration: none;">
     <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Lucide.svg"
+      src="https://github.com/Dadaisuk1/img_repo/blob/main/SVG/lucid.svg"
     />
   </a>
   <a href="https://www.figma.com/design/nlGKqwtZBEyUyPYoN3uaKw/CrediGo?t=5uXRMXJg4xgnEZQv-1" style="text-decoration: none;">
@@ -101,7 +101,7 @@
   </a>
   <a href="https://docs.google.com/document/d/1W7DZPxcE4X0oZpkZDbZ8QiP1F1NVUsC-Ftq7ojO5--U/edit?tab=t.0#heading=h.11u5bx6k9d79" style="text-decoration: none;">
     <img
-      src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Word.svg"
+      src=""
     />
 
   </a>
