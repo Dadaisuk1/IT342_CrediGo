@@ -8,7 +8,9 @@
 </h6>
 
 ---
+
 ### 🚀Features
+
 <h6>
   This are the lists of Features in our System:
 </h6>
@@ -52,19 +54,25 @@
 </ol>
 
 ---
+
 ### 🛠 Tech Stack
+
 <h6>This project is built using the following technologies:</h6>
 
 <div style="display: flex; align-items: center; gap: 8px;">
-  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" width="40px"/></a>
-  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/spring.png" width="40px"/></a>
-  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/react.png" width="40px"/></a>
-  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/android.png" width="40px"/></a>
-  <a href="#"><img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/postgresql.png" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=flat&logo=figma&logoColor=white" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white" width="40px"/></a>
 </div>
 
 ---
+
 ### 🔗Links
+
 <h6>
   Just click the icons to view Diagrams, Figma, and Gantt Chart:
 </h6>
@@ -89,31 +97,33 @@
     <img
       src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Gahntt%20Chart.svg"
     />
-    
+
   </a>
   <a href="https://docs.google.com/document/d/1W7DZPxcE4X0oZpkZDbZ8QiP1F1NVUsC-Ftq7ojO5--U/edit?tab=t.0#heading=h.11u5bx6k9d79" style="text-decoration: none;">
     <img
       src="https://github.com/Dadaisuk1/Dadaisuk1/blob/main/media/Word.svg"
     />
-    
+
   </a>
 </div>
 
 ---
+
 ### 🧑‍💻Developers Profile
+
 <div style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
   <a href="https://github.com/Dadaisuk1" style="text-decoration: none;">
       <img
         src="https://github.com/Dadaisuk1/img_repo/blob/main/SVG/profile_card1.svg"
       />
   </a>
-  
+
   <a href="https://github.com/whysoserious3221" style="text-decoration: none;">
       <img
         src="https://github.com/Dadaisuk1/img_repo/blob/main/SVG/profile_card2.svg"
       />
   </a>
-  
+
   <a href="https://github.com/Boyax123123" style="text-decoration: none;">
       <img
         src="https://github.com/Dadaisuk1/img_repo/blob/main/SVG/profile_card3.svg"
