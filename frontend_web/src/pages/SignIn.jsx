@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import backgroundGames from '../assets/background.svg';
+import backgroundGames from '../assets/images/background.svg';
 import { FaGithub, FaGoogle, FaEye, FaEyeSlash, FaGamepad, FaLock, FaShieldAlt } from 'react-icons/fa';
 
 const SignInPage = () => {

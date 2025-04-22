@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
-import backgroundGames from '../assets/background.svg';
+import backgroundGames from '../assets/images/background.svg';
 import { FaGithub, FaGoogle, FaEye, FaEyeSlash, FaGamepad, FaCreditCard, FaShieldAlt, FaHistory } from 'react-icons/fa';
 
 const SignUpV2 = () => {

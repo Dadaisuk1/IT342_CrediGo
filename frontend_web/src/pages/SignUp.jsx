@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import pattern_bg from '../assets/pattern-bg.svg';
+import pattern_bg from '../assets/images/pattern-bg.svg';
 import { IoMdArrowRoundBack, IoIosEye, IoMdEyeOff } from "react-icons/io";
 import { FaGithub } from 'react-icons/fa';
 
