@@ -1,14 +1,18 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: "Funnel Sans", sans-serif;
+@font-face {
+  font-family: "League Gothic";
+  src: url("./assets/fonts/LeagueGothic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   background-color: #232946;
+  font-family: "Funnel Sans", sans-serif;
 }

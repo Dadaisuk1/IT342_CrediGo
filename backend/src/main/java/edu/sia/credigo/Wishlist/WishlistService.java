@@ -17,7 +17,7 @@ public class WishlistService {
     public WishlistEntity addToWishlist(WishlistEntity wishlist) {
         // Check if the item is already in the wishlist
         if (wishlistRepository.existsByUser_UseridAndProduct_Productid(
-                wishlist.getUser().getUserid(), 
+                wishlist.getUser().getId(),
                 wishlist.getProduct().getProductid())) {
             throw new RuntimeException("Item already exists in wishlist");
         }
@@ -49,7 +49,8 @@ public class WishlistService {
     }
 
     public boolean removeFromWishlistByUserAndProduct(Long userid, Long productid) {
-        Optional<WishlistEntity> wishlistItem = wishlistRepository.findByUser_UseridAndProduct_Productid(userid, productid);
+        Optional<WishlistEntity> wishlistItem = wishlistRepository.findByUser_UseridAndProduct_Productid(userid,
+                productid);
         if (wishlistItem.isPresent()) {
             wishlistRepository.delete(wishlistItem.get());
             return true;

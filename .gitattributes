@@ -1,0 +1,20 @@
+# Auto-detect text files and ensure they use LF endings in the repository
+* text=auto eol=lf
+
+# List specific text file types if needed (optional but explicit)
+*.js text eol=lf
+*.jsx text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Mark binary files to prevent Git from changing them
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+# Add other binary types as needed

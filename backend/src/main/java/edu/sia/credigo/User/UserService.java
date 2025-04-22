@@ -53,7 +53,7 @@ public class UserService {
         user.setPhonenumber(userDetails.getPhonenumber());
         user.setUsername(userDetails.getUsername());
         user.setDateofbirth(userDetails.getDateofbirth());
-        
+
         if (userDetails.getPassword() != null && !userDetails.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
         }

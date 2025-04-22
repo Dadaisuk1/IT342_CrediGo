@@ -53,7 +53,7 @@ public class UserEntity {
     @JsonIgnore
     private List<TransactionEntity> transactions = new ArrayList<>();
 
-    public void dafaultRole(){
+    public void dafaultRole() {
         this.role = "Customer";
     }
 

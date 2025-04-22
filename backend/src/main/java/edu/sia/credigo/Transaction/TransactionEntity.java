@@ -34,7 +34,7 @@ public class TransactionEntity {
 
     @JsonProperty("userid")
     public Long getUserId() {
-        return user != null ? user.getUserid() : null;
+        return user != null ? user.getId() : null;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
