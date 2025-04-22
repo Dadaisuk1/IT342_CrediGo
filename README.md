@@ -60,13 +60,13 @@
 <h6>This project is built using the following technologies:</h6>
 
 <div style="display: flex; align-items: center; gap: 8px;">
-  <a href="#"><img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" width="40px"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=flat&logo=figma&logoColor=white" width="40px"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" width="40px"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" width="40px"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white" width="40px"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white" width="40px"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white" width="40px"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" alt="Git" style="width: 45px; height: 20px;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=flat&logo=figma&logoColor=white" alt="Figma" style="width: 60px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" style="width: 90px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" alt="React" style="width: 60px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL" style="width: 80px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white" alt="Postman" style="width: 70px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white" alt="Kotlin" style="width: 60px; height: auto;"/></a>
 </div>
 
 ---
