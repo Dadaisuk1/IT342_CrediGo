@@ -65,8 +65,9 @@
   <a href="#"><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" style="width: 90px; height: auto;"/></a>
   <a href="#"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" alt="React" style="width: 60px; height: auto;"/></a>
   <a href="#"><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL" style="width: 80px; height: auto;"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white" alt="Postman" style="width: 70px; height: auto;"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white" alt="Kotlin" style="width: 60px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white" alt="Postman" style="width: 80px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white" alt="Kotlin" style="width: 65px; height: auto;"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=flat-square&logo=spring&logoColor=white" alt="Kotlin" style="width: 70px; height: auto;"/></a>
 </div>
 
 ---
