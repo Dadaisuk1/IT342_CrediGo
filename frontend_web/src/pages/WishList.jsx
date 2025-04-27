@@ -1,37 +1,63 @@
-import React, { useState } from 'react';
-
-const dummyWishlist = [
-  {
-    id: 1,
-    name: 'Steam Wallet Code',
-    category: 'Steam',
-    price: 20,
-  },
-  {
-    id: 2,
-    name: 'Riot Points',
-    category: 'Riot Games',
-    price: 10,
-  },
-  {
-    id: 3,
-    name: 'Mobile Legends Diamonds',
-    category: 'Mobile Legends',
-    price: 15,
-  },
-];
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const WishList = () => {
-  const [wishlist, setWishlist] = useState(dummyWishlist);
+  const [wishlist, setWishlist] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const removeFromWishlist = (id) => {
-    setWishlist((prev) => prev.filter((item) => item.id !== id));
+  const fetchWishlist = async () => {
+    const token = localStorage.getItem('token');
+    const userid = localStorage.getItem('userid');
+
+    try {
+      const res = await fetch(`http://localhost:8080/api/wishlist/user/${userid}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const data = await res.json();
+      setWishlist(data);
+    } catch (error) {
+      console.error('Failed to fetch wishlist:', error);
+      toast.error('Failed to load wishlist.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const addToCart = (item) => {
-    // Simulate adding to cart
-    alert(`Added "${item.name}" to cart!`);
+  const removeFromWishlist = async (wishlistId) => {
+    const token = localStorage.getItem('token');
+
+    try {
+      const res = await fetch(`http://localhost:8080/api/wishlist/${wishlistId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (res.ok) {
+        toast.success('Removed from wishlist.');
+        setWishlist((prev) => prev.filter((item) => item.wishlistId !== wishlistId));
+      } else {
+        toast.error('Failed to remove.');
+      }
+    } catch (error) {
+      console.error('Error removing wishlist:', error);
+      toast.error('Something went wrong.');
+    }
   };
+
+  useEffect(() => {
+    fetchWishlist();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg font-semibold">Loading wishlist...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
@@ -44,23 +70,17 @@ const WishList = () => {
           <div className="space-y-4">
             {wishlist.map((item) => (
               <div
-                key={item.id}
+                key={item.wishlistId}
                 className="flex justify-between items-center border p-4 rounded-md shadow-sm"
               >
                 <div>
-                  <h2 className="font-semibold text-[#232946]">{item.name}</h2>
-                  <p className="text-sm text-gray-500">{item.category}</p>
-                  <p className="font-bold text-green-600">${item.price.toFixed(2)}</p>
+                  <h2 className="font-semibold text-[#232946]">{item.product.productname}</h2>
+                  <p className="text-sm text-gray-500">{item.product.category?.categoryname || 'Unknown'}</p>
+                  <p className="font-bold text-green-600">${item.product.salePrice || item.product.price}</p>
                 </div>
                 <div className="flex gap-3">
                   <button
-                    onClick={() => addToCart(item)}
-                    className="bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-2 rounded-md"
-                  >
-                    Add to Cart
-                  </button>
-                  <button
-                    onClick={() => removeFromWishlist(item.id)}
+                    onClick={() => removeFromWishlist(item.wishlistId)}
                     className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-2 rounded-md"
                   >
                     Remove

@@ -5,6 +5,8 @@ import { IoMdArrowRoundBack, IoIosEye, IoMdEyeOff } from "react-icons/io";
 import { FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { jwtDecode } from "jwt-decode";
+import toast from 'react-hot-toast';
 
 
 const SignIn = () => {
@@ -23,32 +25,42 @@ const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('http://localhost:8080/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
-            });
-            const text = await res.text();
-            let data;
-            try {
-              data = JSON.parse(text);
-            } catch {
-              data = { message: text || 'Something went wrong.' };
-            }
-            
-            if (res.ok) {
-                login(data.token);
-                navigate('/home');
-                // Optional: Navigate to a dashboard page
-                // navigate('/dashboard');
+          const res = await fetch('http://localhost:8080/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+          });
+      
+          if (res.ok) {
+            const data = await res.json(); // ✅ only json, don't parse manually
+            console.log("Login response:", data);
+      
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userid', data.userid);
+            localStorage.setItem('username', data.username);
+      
+            login(data.token); // update auth context
+      
+            const decoded = jwtDecode(data.token);
+            console.log("Decoded JWT:", decoded);
+      
+            const isAdmin = decoded?.sub === 'jose'; 
+            if (isAdmin) {
+              navigate('/admin');
             } else {
-                alert(data.message || 'Sign in failed');
+              navigate('/home');
             }
+          } else {
+            const errorText = await res.text(); // read error manually if fail
+            toast.error(errorText || 'Sign in failed!');
+          }
         } catch (err) {
-            alert('Error signing in.');
-            console.error(err);
+          toast.error('An error occurred. Please try again.');
+          console.error(err);
         }
-    };
+      };
+      
+      
     
 
     const handleNavigation = (path) => {

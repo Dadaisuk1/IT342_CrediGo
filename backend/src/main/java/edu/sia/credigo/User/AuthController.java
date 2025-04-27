@@ -25,20 +25,28 @@ public class AuthController {
     @Autowired
     private JwtConfig jwtConfig;
 
+    @Autowired
+    private UserRepository userRepository; // ✅ Add this to fetch role
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
         );
-
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String token = jwtConfig.generateToken(userDetails);
-
-        Map<String, String> response = new HashMap<>();
-        response.put("token", token);
-        return ResponseEntity.ok(response);
+    
+        UserEntity userEntity = userRepository.findByUsername(loginRequest.getUsername())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+    
+        String token = jwtConfig.generateToken(userEntity);
+    
+        // ✅ Now cleanly return a Java object
+        return ResponseEntity.ok(new LoginResponse(
+            token,
+            userEntity.getUserid(),
+            userEntity.getUsername()
+        ));
     }
-}
+}   
 
 class LoginRequest {
     private String username;

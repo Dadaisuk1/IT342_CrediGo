@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.sia.credigo.ProductCategory.CategoryEntity;
+import edu.sia.credigo.ProductCategory.CategoryRepository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +16,22 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Transactional
     public ProductEntity createProduct(ProductEntity product) {
+        if (product.getSalePrice() != null && product.getSalePrice().compareTo(product.getPrice()) >= 0) {
+            throw new RuntimeException("Sale price must be lower than the original price");
+        }
+        
         if (productRepository.existsByProductname(product.getProductname())) {
             throw new RuntimeException("Product with this name already exists");
         }
+        CategoryEntity defaultCategory = categoryRepository.findById(1L)
+            .orElseThrow(() -> new RuntimeException("Default category not found"));
+        product.setCategory(defaultCategory);
+
         return productRepository.save(product);
     }
 
@@ -33,7 +47,10 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public List<ProductEntity> getProductsByCategory(String category) {
+    public List<ProductEntity> getProductsByCategory(Long categoryId) {
+        CategoryEntity category = categoryRepository.findById(categoryId)
+            .orElseThrow(() -> new RuntimeException("Category not found"));
+
         return productRepository.findByCategory(category);
     }
 
@@ -52,7 +69,8 @@ public class ProductService {
         product.setCategory(productDetails.getCategory());
         product.setImageUrl(productDetails.getImageUrl());
         product.setIsActive(productDetails.getIsActive());
-
+        product.setSalePrice(productDetails.getSalePrice());
+        
         return productRepository.save(product);
     }
 

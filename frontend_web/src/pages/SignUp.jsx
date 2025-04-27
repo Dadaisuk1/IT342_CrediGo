@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import pattern_bg from '../assets/pattern-bg.svg';
 import { IoMdArrowRoundBack, IoIosEye, IoMdEyeOff } from "react-icons/io";
 import { FaGithub } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ const SignUp = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match.");
+      toast.error('Passwords do not match!');
       return;
     }
 
@@ -53,14 +54,14 @@ const SignUp = () => {
       }
 
       if (res.ok) {
-        alert('Signed up successfully!');
+        toast.success('Sign up successful!');
         navigate('/sign-in');
       } else {
-        alert(data.message || 'Sign up failed');
+        toast.error(data.message || 'Sign up failed!');
       }
 
     } catch (err) {
-      alert('Error signing up.');
+      toast.error('An error occurred. Please try again later.');
       console.error(err);
     }
   };

@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Search,
-  Heart,
-  ShoppingCart,
-  User,
-  ChevronLeft,
-  ChevronRight,
-  Zap,
-  Shield,
-  Headphones,
-  Wallet,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Zap, Shield, Headphones, Wallet } from 'lucide-react';
 
 const Homepage = () => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('http://localhost:8080/api/products/getActiveProducts', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      const data = await res.json();
+      setProducts(data.slice(0, 3)); // 👉 Only take the first 3 products
+    } catch (error) {
+      console.error('Failed to fetch products:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
-    
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="grid grid-cols-1 md:grid-cols-2">
@@ -26,7 +33,6 @@ const Homepage = () => {
             <p className="text-white mb-6">Instant transactions for Steam, Riot, Garena, and more!</p>
             <div className="flex gap-4">
               <Link to="/shop" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold">Shop Now</Link>
-              <button className="bg-white text-black px-4 py-2 rounded font-semibold border border-gray-200">Learn More</button>
             </div>
           </div>
           <div className="relative h-[300px] md:h-auto bg-gray-200 flex items-center justify-center">
@@ -38,20 +44,16 @@ const Homepage = () => {
           </div>
         </section>
 
-        {/* Popular Game Points */}
+        {/* Featured Products */}
         <section className="py-12 px-4 md:px-6">
-          <h2 className="text-2xl font-bold mb-8">Popular Game Points</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {['Steam', 'Riot', 'Garena', 'Xbox', 'Mobile Legends'].map((title, index) => (
-              <div key={index} className="p-4 border rounded shadow-sm">
-                <h3 className="text-sm font-medium">{title}</h3>
-                <div className="h-[100px] bg-gray-200 my-2 rounded" />
-                <h4 className="font-medium">{title} Code</h4>
-                <div className="text-yellow-400 text-sm">★★★★☆</div>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-green-600 font-bold">$20.00</span>
-                  <button className="bg-green-500 text-white px-3 py-1 rounded text-sm">Add to Cart</button>
-                </div>
+          <h2 className="text-2xl font-bold mb-8">Featured Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {products.map((product) => (
+              <div key={product.productid} className="bg-white p-4 rounded shadow">
+                <img src={product.imageUrl || 'https://via.placeholder.com/150'} alt={product.productname} className="w-full h-40 object-cover mb-4" />
+                <h3 className="text-lg font-semibold">{product.productname}</h3>
+                <p className="text-gray-600 text-sm">{product.description}</p>
+                <p className="text-green-600 font-bold mt-2">${product.salePrice || product.price}</p>
               </div>
             ))}
           </div>
@@ -85,28 +87,7 @@ const Homepage = () => {
       {/* Footer */}
       <footer className="bg-green-800 text-white py-12 px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="font-bold mb-4">CrediGo</h3>
-            <p className="text-sm">Your trusted source of game points since 2025</p>
-          </div>
-          <div>
-            <h3 className="font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/faqs">FAQs</Link></li>
-              <li><Link to="/terms">Terms</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-bold mb-4">Contact Us</h3>
-            <p className="text-sm">support.credigo@gmail.com</p>
-            <p className="text-sm">+63992345238</p>
-          </div>
-          <div>
-            <h3 className="font-bold mb-4">Follow Us</h3>
-            <p className="text-sm">Social links here...</p>
-          </div>
+          {/* Footer content here */}
         </div>
         <div className="text-center text-sm mt-8 border-t border-white/20 pt-4">
           <p>&copy; 2025 CrediGo. All Rights Reserved.</p>

@@ -1,6 +1,8 @@
 package edu.sia.credigo.Product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import edu.sia.credigo.Wishlist.WishlistEntity;
 import edu.sia.credigo.Transaction.TransactionEntity;
+import edu.sia.credigo.ProductCategory.CategoryEntity; // 👈 Make sure you import this
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -27,10 +30,17 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productid;
+
     private String productname;
     private String description;
     private BigDecimal price;
-    private String category;
+    private BigDecimal salePrice; // nullable: only set if product is on sale
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private CategoryEntity category;  // ✅ updated field
+
     private String imageUrl;
     private Boolean isActive = true;
 
@@ -44,7 +54,7 @@ public class ProductEntity {
 
     @CreationTimestamp
     private LocalDateTime createdDate;
+
     @UpdateTimestamp
     private LocalDateTime modifiedDate;
-
 }

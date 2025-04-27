@@ -2,6 +2,8 @@ package edu.sia.credigo.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,18 +11,44 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
-
+ 
     @Autowired
     private ProductService productService;
+    
 
-    @PostMapping("createProduct")
+
+     // ADMIN ONLY - Manage All Products
+     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+     @GetMapping("/admin/getAllProducts")
+     public ResponseEntity<List<ProductEntity>> getAllProducts() {
+         return ResponseEntity.ok(productService.getAllProducts());
+     }
+
+
+     // PUBLIC - Customers View Active Products
+    @GetMapping("/getActiveProducts")
+    public ResponseEntity<List<ProductEntity>> getActiveProducts() {
+        return ResponseEntity.ok(productService.getAllActiveProducts());
+     } 
+
+
+    
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping("/createProduct")
     public ResponseEntity<ProductEntity> createProduct(@RequestBody ProductEntity product) {
+        System.out.println("✅ Inside createProduct: authorized admin");
+
+        System.out.println("🔐 Spring Security Context Auth: " + SecurityContextHolder.getContext().getAuthentication());
+        System.out.println("🔐 Authorities: " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+        System.out.println("🔐 Principal: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return ResponseEntity.ok(productService.createProduct(product));
     }
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("getAllProducts")
     public ResponseEntity<List<ProductEntity>> getAllProducts(
             @RequestParam(required = false) Boolean activeOnly) {
+        System.out.println("✅ Inside getAllProducts - Access granted");
+
         if (Boolean.TRUE.equals(activeOnly)) {
             return ResponseEntity.ok(productService.getAllActiveProducts());
         }
@@ -34,10 +62,11 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/category/{category}")
-    public ResponseEntity<List<ProductEntity>> getProductsByCategory(@PathVariable String category) {
-        return ResponseEntity.ok(productService.getProductsByCategory(category));
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<ProductEntity>> getProductsByCategory(@PathVariable Long categoryId) {
+        return ResponseEntity.ok(productService.getProductsByCategory(categoryId));
     }
+
 
     @GetMapping("/search")
     public ResponseEntity<List<ProductEntity>> searchProducts(@RequestParam String name) {

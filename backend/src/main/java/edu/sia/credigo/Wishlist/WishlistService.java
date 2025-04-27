@@ -4,6 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.sia.credigo.Product.ProductEntity;
+import edu.sia.credigo.Product.ProductRepository;
+import edu.sia.credigo.User.UserEntity;
+import edu.sia.credigo.User.UserRepository;
+import edu.sia.credigo.Product.ProductResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,13 +19,31 @@ public class WishlistService {
     @Autowired
     private WishlistRepository wishlistRepository;
 
-    public WishlistEntity addToWishlist(WishlistEntity wishlist) {
-        // Check if the item is already in the wishlist
-        if (wishlistRepository.existsByUser_UseridAndProduct_Productid(
-                wishlist.getUser().getUserid(), 
-                wishlist.getProduct().getProductid())) {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    
+
+    @Transactional
+    public WishlistEntity addToWishlist(Long userid, Long productid) {
+        if (wishlistRepository.existsByUser_UseridAndProduct_Productid(userid, productid)) {
             throw new RuntimeException("Item already exists in wishlist");
         }
+
+        UserEntity user = userRepository.findById(userid)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        ProductEntity product = productRepository.findById(productid)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        WishlistEntity wishlist = WishlistEntity.builder()
+                .user(user)
+                .product(product)
+                .build();
+
         return wishlistRepository.save(wishlist);
     }
 
@@ -28,9 +51,25 @@ public class WishlistService {
         return wishlistRepository.findAll();
     }
 
-    public List<WishlistEntity> getWishlistByUserId(Long userid) {
-        return wishlistRepository.findByUser_Userid(userid);
+    public List<WishlistResponse> getWishlistByUserId(Long userid) {
+        List<WishlistEntity> wishlistEntities = wishlistRepository.findByUser_Userid(userid);
+    
+        return wishlistEntities.stream()
+                .<WishlistResponse>map(entity -> WishlistResponse.builder()
+                        .wishlistId(entity.getWishlistId())
+                        .product(ProductResponse.builder()
+                            .productid(entity.getProduct().getProductid())
+                            .productname(entity.getProduct().getProductname())
+                            .imageUrl(entity.getProduct().getImageUrl())
+                            .price(entity.getProduct().getPrice().doubleValue())
+                            .salePrice(entity.getProduct().getSalePrice().doubleValue())
+                            .categoryname(entity.getProduct().getCategory() != null ? entity.getProduct().getCategory().getCategoryname() : null)
+                            .build()
+                        )
+                        .build())
+                .toList();
     }
+    
 
     public Optional<WishlistEntity> getWishlistItemById(Long id) {
         return wishlistRepository.findById(id);

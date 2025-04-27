@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const TopUp = () => {
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('predefined');
+  const token = localStorage.getItem('token');
 
   const predefinedAmounts = [5, 10, 20, 50, 100];
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     const amount = paymentMethod === 'predefined' ? selectedAmount : customAmount;
     if (!amount || amount <= 0) {
-      alert('Please select or enter a valid amount');
+      toast.error('Please select a valid amount!');
       return;
     }
-    alert(`Top-up of $${amount} via ${paymentMethod === 'predefined' ? 'wallet' : 'credit card'} confirmed!`);
-    // TODO: Send to backend
+
+    try {
+      const res = await fetch(`http://localhost:8080/api/users/topup?amount=${amount}`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (res.ok) {
+        toast.success('Top-up successful!');
+        setSelectedAmount(null);
+        setCustomAmount('');
+      } else {
+        toast.error('Top-up failed! Please try again.');
+      }
+    } catch (err) {
+      console.error('Top-up error:', err);
+      toast.error('An error occurred. Please try again later.');
+    }
   };
 
   return (
@@ -77,7 +95,7 @@ const TopUp = () => {
               min="1"
               required
             />
-            {/* Placeholder for credit card details */}
+            {/* Card field (for future real payment API integration) */}
             <div className="mt-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
               <input

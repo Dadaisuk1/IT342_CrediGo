@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import edu.sia.credigo.User.UserEntity;
+import edu.sia.credigo.User.UserRepository;
+import org.springframework.security.core.Authentication;
+import java.util.Optional;
 import java.util.List;
 
 @RestController
@@ -12,6 +16,8 @@ public class MailController {
 
     @Autowired
     private MailService mailService;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/createMail")
     public ResponseEntity<MailEntity> createMail(@RequestBody MailEntity mail) {
@@ -57,4 +63,15 @@ public class MailController {
         }
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/getUserMails/me")
+    public ResponseEntity<List<MailEntity>> getMailsForCurrentUser(Authentication authentication) {
+    String username = authentication.getName();
+    Optional<UserEntity> userOpt = userRepository.findByUsername(username);
+        if (userOpt.isEmpty()) {
+         return ResponseEntity.badRequest().build();
+    }
+    List<MailEntity> mails = mailService.getMailsByUserId(userOpt.get().getUserid());
+    return ResponseEntity.ok(mails);
+}
+
 }
