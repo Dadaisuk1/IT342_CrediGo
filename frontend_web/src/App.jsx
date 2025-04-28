@@ -1,53 +1,42 @@
-import React, { Suspense, lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './pages/admin/Dashboard';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Homepage from './pages/Homepage';
+import LandingPage from './pages/LandingPage';
+import Shop from './pages/Shop';
+import TopUp from './pages/TopUp';
+import WishList from './pages/WishList';
+import Layout from './components/Layout';
 
-// Lazy load page components
-// for users
-const SignIn = lazy(() => import('./pages/SignIn'));
-const SignUpV2 = lazy(() => import('./pages/SignUpv2'));
-const Home = lazy(() => import('./pages/Home'));
-const Shop = lazy(() => import('./pages/Shop'));
-const Transactions = lazy( () => import('./pages/Transactions'));
-const Wishlist = lazy(() => import('./pages/Wishlist'));
-const About = lazy(() => import('./pages/About'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const Wallet = lazy(() => import('./pages/Wallet'));
-
-// lazy load page for admin
-const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
-/*
-// Example for protected routes (optional)
-const ProtectedAdminRoute = () => {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  const isAdmin = currentUser && currentUser.role === 'Admin';
-
-  return isAdmin ? <AdminDashboard /> : <Navigate to="/404" replace />;
-};
-*/
+import AdminDashboard from './admin/AdminDashboard';
+import CreateProduct from './admin/CreateProduct';
+import ManageProducts from './admin/ManageProducts';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
-    <Suspense fallback={<div className="text-center p-10 text-gray-600">Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUpV2 />} />
-        <Route path="/home" element={<Home />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/sign-up" element={<SignUp />} />
+
+      {/* Admin Routes */}
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin/create-product" element={<CreateProduct />} />
+      <Route path="/admin/manage-products" element={<ManageProducts />} />
+      
+
+      {/* Main App Routes Wrapped in Layout */}
+      <Route element={<Layout />}>
+        <Route path="/home" element={<Homepage />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/admin/*" element={<AdminDashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/wallet" element={<Wallet />} />
-
-        {/* <Route path="/admin" element={<ProtectedAdminRoute />} /> */}
-
-        <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+        <Route path="/top-up" element={<TopUp />} />
+        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+    </Routes>
   );
 }
 

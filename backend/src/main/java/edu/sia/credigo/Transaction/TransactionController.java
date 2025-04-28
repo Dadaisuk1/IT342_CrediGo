@@ -4,14 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.security.core.Authentication;
+import edu.sia.credigo.Transaction.TransactionRepository;
+import edu.sia.credigo.User.UserEntity;
+import edu.sia.credigo.User.UserRepository;
+
+import java.util.Optional;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/transactions")
 public class TransactionController {
-
+    
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+
+    
 
     @PostMapping("/create")
     public ResponseEntity<TransactionEntity> createTransaction(@RequestBody TransactionEntity transaction) {
@@ -56,4 +71,14 @@ public class TransactionController {
         }
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/user/me")
+    public ResponseEntity<List<TransactionEntity>> getTransactionsForCurrentUser(Authentication authentication) {
+        String username = authentication.getName();
+        Optional<UserEntity> userOpt = userRepository.findByUsername(username);
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+    }
+        List<TransactionEntity> transactions = transactionRepository.findByUser_Userid(userOpt.get().getUserid());
+        return ResponseEntity.ok(transactions);
+}
 }

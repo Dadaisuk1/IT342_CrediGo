@@ -14,10 +14,13 @@ public class WishlistController {
     private WishlistService wishlistService;
 
     @PostMapping("/add")
-    public ResponseEntity<WishlistEntity> addToWishlist(@RequestBody WishlistEntity wishlist) {
+    public ResponseEntity<WishlistEntity> addToWishlist(@RequestBody WishlistRequest wishlistRequest) {
         try {
-            WishlistEntity newWishlistItem = wishlistService.addToWishlist(wishlist);
-            return ResponseEntity.ok(newWishlistItem);
+            WishlistEntity wishlist = wishlistService.addToWishlist(
+                wishlistRequest.getUserid(),
+                wishlistRequest.getProductid()
+            );
+            return ResponseEntity.ok(wishlist);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();
         }
@@ -29,9 +32,10 @@ public class WishlistController {
         return ResponseEntity.ok(wishlistItems);
     }
 
+    // 🛠 Fix here to expect WishlistResponse
     @GetMapping("/user/{userid}")
-    public ResponseEntity<List<WishlistEntity>> getWishlistByUserId(@PathVariable Long userid) {
-        List<WishlistEntity> wishlistItems = wishlistService.getWishlistByUserId(userid);
+    public ResponseEntity<List<WishlistResponse>> getWishlistByUserId(@PathVariable Long userid) {
+        List<WishlistResponse> wishlistItems = wishlistService.getWishlistByUserId(userid);
         return ResponseEntity.ok(wishlistItems);
     }
 

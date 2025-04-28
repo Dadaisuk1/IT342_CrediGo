@@ -26,7 +26,7 @@ public class MailEntity {
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "userid", nullable = false)
     @JsonIgnore
     private UserEntity user;
 
