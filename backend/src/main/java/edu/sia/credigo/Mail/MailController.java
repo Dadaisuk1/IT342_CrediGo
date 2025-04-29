@@ -70,7 +70,8 @@ public class MailController {
         if (userOpt.isEmpty()) {
          return ResponseEntity.badRequest().build();
     }
-    List<MailEntity> mails = mailService.getMailsByUserId(userOpt.get().getUserid());
+    Long userId = userOpt.get().getUserid();
+    List<MailEntity> mails = mailService.getMailsByUserId(userId);
     return ResponseEntity.ok(mails);
 }
 

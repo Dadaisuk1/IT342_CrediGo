@@ -53,7 +53,7 @@ public class UserEntity {
     @JsonIgnore
     private List<TransactionEntity> transactions = new ArrayList<>();
 
-    public void dafaultRole() {
+    public void dafaultRole(){
         this.role = "Customer";
     }
 
@@ -65,4 +65,8 @@ public class UserEntity {
 
     private LocalDate dateofbirth;
     private LocalDate registration;
+
+    public Long getUserid() {
+        return this.userid;
+    }
 }

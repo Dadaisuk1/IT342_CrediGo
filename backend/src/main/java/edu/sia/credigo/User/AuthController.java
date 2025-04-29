@@ -26,7 +26,7 @@ public class AuthController {
     private JwtConfig jwtConfig;
 
     @Autowired
-    private UserRepository userRepository; // ✅ Add this to fetch role
+    private UserRepository userRepository; // Add this to fetch role
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
@@ -39,7 +39,7 @@ public class AuthController {
     
         String token = jwtConfig.generateToken(userEntity);
     
-        // ✅ Now cleanly return a Java object
+        // Now cleanly return a Java object
         return ResponseEntity.ok(new LoginResponse(
             token,
             userEntity.getUserid(),
@@ -67,4 +67,4 @@ class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-} 
+}

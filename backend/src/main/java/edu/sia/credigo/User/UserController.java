@@ -21,7 +21,7 @@ import java.util.Optional;
 public class UserController {
 
 
-    
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -58,7 +58,6 @@ public class UserController {
                 .description("Wallet Top-Up")
                 .build();
         transactionRepository.save(transaction);
-
         return ResponseEntity.ok("Wallet topped up successfully!");
     }
     @GetMapping("/wallet")
@@ -73,7 +72,7 @@ public class UserController {
         Long wallet = userOpt.get().getWallet();
         return ResponseEntity.ok(wallet != null ? wallet : 0L);
         }
-    
+
 
     @PostMapping("/createUser")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {

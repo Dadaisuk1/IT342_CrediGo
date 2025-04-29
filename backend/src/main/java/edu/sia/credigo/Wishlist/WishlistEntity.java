@@ -32,7 +32,7 @@ public class WishlistEntity {
 
     @JsonProperty("userid")
     public Long getUserId() {
-        return user != null ? user.getId() : null;
+        return user != null ? user.getUserid() : null;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
