@@ -4,5 +4,12 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  assets: ['./assets/fonts/']
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://it342-credigo-msd3.onrender.com',
+        changeOrigin: true
+      }
+    }
+  }
 })

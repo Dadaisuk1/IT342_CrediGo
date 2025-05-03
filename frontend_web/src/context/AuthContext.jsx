@@ -26,7 +26,8 @@ export const AuthProvider = ({ children }) => {
   const fetchWallet = async () => {
     if (!token) return;
     try {
-      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/users/wallet', {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE_URL}/users/wallet`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -43,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   const fetchMails = async () => {
     if (!token) return;
     try {
-      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/mails/getUserMails/me', {
+      const res = await fetch(`${API_BASE_URL}/mails/getUserMails/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();

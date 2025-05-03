@@ -31,7 +31,8 @@ const SignUp = () => {
     }
 
     try {
-      const res = await fetch("https://it342-credigo-msd3.onrender.com/api/users/createUser", {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        const res = await fetch(`${API_BASE_URL}/users/createUser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

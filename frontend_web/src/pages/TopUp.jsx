@@ -17,7 +17,8 @@ const TopUp = () => {
     }
 
     try {
-      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/users/topup?amount=${amount}`, {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE_URL}/users/topup?amount=${amount}`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });

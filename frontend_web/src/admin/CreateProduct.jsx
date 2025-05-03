@@ -25,7 +25,8 @@ const CreateProduct = () => {
     try {
       const token = localStorage.getItem('token');
 
-      const res = await fetch('http://it342-credigo-msd3.onrender.com/api/products/createProduct', {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE_URL}/products/createProduct`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -10,7 +10,8 @@ const WishList = () => {
     const userid = localStorage.getItem('userid');
 
     try {
-      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/wishlist/user/${userid}`, {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE_URL}/wishlist/user/${userid}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -29,7 +30,7 @@ const WishList = () => {
     const token = localStorage.getItem('token');
 
     try {
-      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/wishlist/${wishlistId}`, {
+      const res = await fetch(`${API_BASE_URL}/wishlist/${wishlistId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`
