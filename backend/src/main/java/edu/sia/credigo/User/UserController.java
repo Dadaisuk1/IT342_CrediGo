@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://it-342-credi-go.vercel.app/")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
