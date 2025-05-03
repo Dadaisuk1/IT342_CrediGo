@@ -1,0 +1,20 @@
+{
+  "headers": [
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html",
+      "status": 200
+    }
+  ]
+}
