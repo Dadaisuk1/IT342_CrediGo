@@ -3,17 +3,17 @@ FROM openjdk:17-jdk-slim
 # Install Maven
 RUN apt-get update && apt-get install -y maven
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the backend files
-COPY backend/ .
+# Copy the backend files from your local `backend` directory to `/app` inside the container
+COPY . /app
 
-# Build the project with Maven
+# Build the backend project with Maven
 RUN mvn clean package
 
-# Expose the port that the app will run on
+# Expose the port the application will use (usually 8080 for Spring Boot apps)
 EXPOSE 8080
 
-# Start the application
+# Run the application
 CMD ["mvn", "spring-boot:run"]
