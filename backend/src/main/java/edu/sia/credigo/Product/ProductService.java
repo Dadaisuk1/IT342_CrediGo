@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.sia.credigo.ProductCategory.CategoryEntity;
-import edu.sia.credigo.ProductCategory.CategoryRepository;
+import edu.sia.credigo.ProductCategory.ProductCategoryEntity;
+import edu.sia.credigo.ProductCategory.ProductCategoryRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,7 @@ public class ProductService {
     private ProductRepository productRepository;
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private ProductCategoryRepository categoryRepository;
 
     @Transactional
     public ProductEntity createProduct(ProductEntity product) {
@@ -28,7 +28,7 @@ public class ProductService {
         if (productRepository.existsByProductname(product.getProductname())) {
             throw new RuntimeException("Product with this name already exists");
         }
-        CategoryEntity defaultCategory = categoryRepository.findById(1L)
+        ProductCategoryEntity defaultCategory = categoryRepository.findById(1L)
             .orElseThrow(() -> new RuntimeException("Default category not found"));
         product.setCategory(defaultCategory);
 
@@ -48,7 +48,7 @@ public class ProductService {
     }
 
     public List<ProductEntity> getProductsByCategory(Long categoryId) {
-        CategoryEntity category = categoryRepository.findById(categoryId)
+        ProductCategoryEntity category = categoryRepository.findById(categoryId)
             .orElseThrow(() -> new RuntimeException("Category not found"));
 
         return productRepository.findByCategory(category);

@@ -1,4 +1,4 @@
-package edu.sia.credigo.deposit;
+package edu.sia.credigo.Deposit;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

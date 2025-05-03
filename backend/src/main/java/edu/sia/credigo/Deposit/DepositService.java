@@ -1,4 +1,4 @@
-package edu.sia.credigo.deposit;
+package edu.sia.credigo.Deposit;
 
 import edu.sia.credigo.User.UserEntity;
 import edu.sia.credigo.User.UserRepository;
@@ -27,7 +27,7 @@ public class DepositService {
 
     public List<DepositEntity> getDepositsByUserId(Long userId) {
         return depositRepository.findAll().stream()
-                .filter(d -> d.getUser().getUserId().equals(userId))
+                .filter(d -> d.getUser().getUserid().equals(userId))
                 .toList();
     }
 

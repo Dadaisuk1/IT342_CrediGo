@@ -1,4 +1,4 @@
-package edu.sia.credigo.deposit;
+package edu.sia.credigo.Deposit;
 
 import edu.sia.credigo.User.UserEntity;
 import jakarta.persistence.*;

@@ -12,7 +12,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import edu.sia.credigo.Wishlist.WishlistEntity;
 import edu.sia.credigo.Transaction.TransactionEntity;
-import edu.sia.credigo.ProductCategory.CategoryEntity; // 👈 Make sure you import this
+import edu.sia.credigo.ProductCategory.ProductCategoryEntity; // 👈 Ensure the correct package path
+import edu.sia.credigo.ProductCategory.ProductCategoryEntity; // 👈 Add the correct import for CategoryEntity
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -38,7 +39,7 @@ public class ProductEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private CategoryEntity category;  // ✅ updated field
+    private ProductCategoryEntity category;  // ✅ updated field
 
     private String imageUrl;
     private Boolean isActive = true;

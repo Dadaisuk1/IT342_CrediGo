@@ -1,4 +1,4 @@
-package edu.sia.credigo.deposit;
+package edu.sia.credigo.Deposit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
