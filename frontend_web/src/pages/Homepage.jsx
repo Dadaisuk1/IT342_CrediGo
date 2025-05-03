@@ -7,7 +7,7 @@ const Homepage = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/products/getActiveProducts', {
+      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/products/getActiveProducts', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

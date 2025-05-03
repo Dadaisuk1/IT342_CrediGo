@@ -33,7 +33,7 @@ const TransactionManagement = () => {
     const fetchTransactions = async () => {
       try {
         // In a real application, this would be an API call
-        // const response = await fetch('http://localhost:8080/api/transactions', {
+        // const response = await fetch('https://it342-credigo-msd3.onrender.com/api/transactions', {
         //   headers: {
         //     'Authorization': `Bearer ${localStorage.getItem('token')}`
         //   }

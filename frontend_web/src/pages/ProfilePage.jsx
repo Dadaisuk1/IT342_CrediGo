@@ -16,7 +16,7 @@ const ProfilePage = () => {
 
   const fetchWallet = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/users/wallet', {
+      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/users/wallet', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -31,7 +31,7 @@ const ProfilePage = () => {
       const decodedToken = JSON.parse(atob(token.split('.')[1])); // decode JWT
       const username = decodedToken.sub;
 
-      const res = await fetch(`http://localhost:8080/api/users/username/${username}`, {
+      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/users/username/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -49,7 +49,7 @@ const ProfilePage = () => {
 
   const fetchTransactions = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/transactions/user/me', {
+      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/transactions/user/me', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -67,7 +67,7 @@ const ProfilePage = () => {
     try {
       const { userid, ...updatedData } = userInfo;
 
-      const res = await fetch(`http://localhost:8080/api/users/updateUser/${userid}`, {
+      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/users/updateUser/${userid}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

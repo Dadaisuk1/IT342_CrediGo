@@ -17,7 +17,7 @@ const TopUp = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:8080/api/users/topup?amount=${amount}`, {
+      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/users/topup?amount=${amount}`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -45,7 +45,7 @@ const Layout = () => {
 
     try {
       for (const item of cartItems) {
-        const res = await fetch(`http://localhost:8080/api/buy/${item.productid}`, {
+        const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/buy/${item.productid}`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}` },
         });

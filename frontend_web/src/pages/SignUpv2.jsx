@@ -76,7 +76,7 @@ const SignUpV2 = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8080/api/users/createUser", {
+      const res = await fetch("https://it342-credigo-msd3.onrender.com/api/users/createUser", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
