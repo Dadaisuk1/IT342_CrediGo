@@ -10,7 +10,7 @@ const WishList = () => {
     const userid = localStorage.getItem('userid');
 
     try {
-      const res = await fetch(`http://localhost:8080/api/wishlist/user/${userid}`, {
+      const res = await fetch(`https://it342-credigo-msd3.onrender.com/api/wishlist/user/${userid}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
