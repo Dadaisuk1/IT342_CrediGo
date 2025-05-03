@@ -9,7 +9,7 @@ const ManageProducts = () => {
   console.log("📦 JWT Token:", token);
   const fetchProducts = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/products/getAllProducts', {
+      const res = await fetch('http://it342-credigo-msd3.onrender.com/api/products/getAllProducts', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -24,7 +24,7 @@ const ManageProducts = () => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/api/products/deleteProduct/${id}`, {
+      const res = await fetch(`http://it342-credigo-msd3.onrender.com/api/products/deleteProduct/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -43,7 +43,7 @@ const ManageProducts = () => {
 
   const toggleActiveStatus = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8080/api/products/deactivate/${id}`, {
+      const res = await fetch(`http://it342-credigo-msd3.onrender.com/api/products/deactivate/${id}`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -71,7 +71,7 @@ const ManageProducts = () => {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:8080/api/products/updateProduct/${editForm.productid}`, {
+      const res = await fetch(`http://it342-credigo-msd3.onrender.com/api/products/updateProduct/${editForm.productid}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

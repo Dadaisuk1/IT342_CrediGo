@@ -25,7 +25,7 @@ const CreateProduct = () => {
     try {
       const token = localStorage.getItem('token');
 
-      const res = await fetch('http://localhost:8080/api/products/createProduct', {
+      const res = await fetch('http://it342-credigo-msd3.onrender.com/api/products/createProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

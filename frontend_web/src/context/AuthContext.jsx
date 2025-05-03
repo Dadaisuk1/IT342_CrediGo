@@ -26,26 +26,34 @@ export const AuthProvider = ({ children }) => {
   const fetchWallet = async () => {
     if (!token) return;
     try {
-      const res = await fetch('http://localhost:8080/api/users/wallet', {
+      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/users/wallet', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
       setWallet(data);
     } catch (error) {
       console.error('Failed to fetch wallet:', error);
+      logout();  // Optionally log out if there's an error
     }
   };
 
   const fetchMails = async () => {
     if (!token) return;
     try {
-      const res = await fetch('http://localhost:8080/api/mails/getUserMails/me', {
+      const res = await fetch('https://it342-credigo-msd3.onrender.com/api/mails/getUserMails/me', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
       setMails(data);
     } catch (error) {
       console.error('Failed to fetch mails:', error);
+      logout();  // Optionally log out if there's an error
     }
   };
 
